@@ -61,7 +61,7 @@ $cyan: #0dcaf0;
 
 
 /* scss-docs-start grid-breakpoints*/
-$grid-breakpoints: (
+/*$grid-breakpoints: (
 	xs: 0,
 	sm: 576px,
 	md: 768px,
@@ -69,7 +69,7 @@ $grid-breakpoints: (
 	xl: 1200px,
 	xxl: 1400px,
 	xxxl: 1580px
-);
+);*/
 // scss-docs-end grid-breakpoints
 
 // Grid containers
@@ -78,37 +78,37 @@ $grid-breakpoints: (
 
 // scss-docs-start container-max-widths
 
-$container-max-widths: (
+/*$container-max-widths: (
 	sm: 540px,
 	md: 758px,
 	lg: 990px,
 	xl: 1140px,
 	xxl: 1320px,
 	xxxl: 1520px
-);	
+);*/
 
 // Fonts
 $font-family-sans-serif: 'Inter',
-system-ui,
--apple-system,
-'Segoe UI',
-Roboto,
-'Helvetica Neue',
-Arial,
-'Noto Sans',
-'Liberation Sans',
-sans-serif;
+	system-ui,
+	-apple-system,
+	'Segoe UI',
+	Roboto,
+	'Helvetica Neue',
+	Arial,
+	'Noto Sans',
+	'Liberation Sans',
+	sans-serif;
 $font-family-serif: Georgia,
-'Times New Roman',
-Times,
-serif;
+	'Times New Roman',
+	Times,
+	serif;
 $font-family-monospace: SFMono-Regular,
-Menlo,
-Monaco,
-Consolas,
-'Liberation Mono',
-'Courier New',
-monospace;
+	Menlo,
+	Monaco,
+	Consolas,
+	'Liberation Mono',
+	'Courier New',
+	monospace;
 $font-family-base: $font-family-sans-serif;
 
 $link-decoration: none;
@@ -460,13 +460,16 @@ header {
 	.navbar-nav li a {
 		font-size: 1.125rem;
 		font-weight: 600;
+
 		&:hover:not(.active) {
 			opacity: .6;
 		}
+
 		&.active {
 			color: $primary;
 			opacity: 1;
 		}
+
 		@media (min-width: breakpoint-max(md)) {
 			padding: 1rem 1.5rem !important;
 		}
@@ -484,6 +487,7 @@ header {
 				padding: .5rem .35rem;
 				color: $secondary;
 				font-weight: 600;
+
 				&:hover {
 					opacity: .6;
 				}
@@ -500,13 +504,27 @@ header {
 	}
 }
 
-.cab-int { 
-	h1.has-large-font-size { font-size: 3.5rem !important;}
-	h1, p {
+.cab-int {
+	h1.has-large-font-size {
+		font-size: 3.5rem !important;
+	}
+
+	h1,
+	p {
 		max-width: 36rem;
 	}
 }
 
+.wp-block-cover.alignwide.cab-int,
+.wp-block-cover.alignwide.has-custom-content-position.is-position-center-right.cab-int {
+	transform: none !important;
+	left: unset !important;
+
+	//	position: relative !important;
+	.wp-block-cover__inner-container.is-layout-flow.wp-block-cover-is-layout-flow {
+		width: 100% !important;
+	}
+}
 
 
 
