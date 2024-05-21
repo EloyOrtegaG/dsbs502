@@ -14,7 +14,8 @@ module.exports = {
 			client: {
 				overlay: false,
 			},
-			 open: ["http://localhost:8212/www8212/mabastos"], // (Optional) Add your local domain here
+			// open: ["http://localhost:8212/www8212/mabastos"], // (Optional) Add your local domain here
+			open: ["https://mercadoabastos.local/"], // (Optional) Add your local domain here
 			liveReload: true,
 			hot: false,
 			compress: true,
