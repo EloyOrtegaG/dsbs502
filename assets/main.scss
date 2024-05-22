@@ -243,6 +243,10 @@ img {
 	.search-form {
 		min-width: 250px;
 	}
+	 a i {
+		font-size: 36px;
+		color: $primary;
+	}
 }
 
 /*.navbar-brand {
@@ -268,7 +272,7 @@ main {
 
 #footer {
 	//background-color: #fff;
-	background: #333 url("../../../uploads/2024/05/bg-footer.jpg") center center;
+	background: #333 url("http://localhost:10004/wp-content/uploads/2024/05/bg-footer.jpg") center center;
 	background-size: cover;
 	color: $text-white;
 
@@ -591,11 +595,15 @@ header {
 				background-color: $primary;
 				color: white;
 			}
-			&.current-menu-item a span {
-				background-color: #E8EBEE;
-				color: $primary;				
-			}
-			a:hover span {				
+			&.current-menu-item a {
+				&:hover{cursor: default;}
+					span {
+					background-color: #E8EBEE;
+					color: $primary;	
+								
+				}
+		}
+			 a:not(&.current-menu-item a):hover span {				
 					background-color: rgba($primary, .8);
 				
 			}
@@ -832,3 +840,51 @@ header {
 		margin-bottom: 0;
 	}
 }
+
+
+
+    .offcanvas {
+        .offcanvas-body { padding: 0;}
+        h5 {
+            opacity: 0
+        }
+
+        .btn-close {
+            color: white;
+
+            &:hover {
+                color: white
+            }
+        }
+
+        background: $primary url("../build/images/bg-offcanvas.jpg") no-repeat;
+		background-size: cover;
+		
+
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                list-style: none;
+
+                a {
+                    list-style: none;
+                    text-decoration: none;
+                    display: block;
+                    color: rgba(white, .7);
+					&.active { color: white !important;
+						background-color: rgba(white, .3);}
+                    padding: .75rem 1.5rem;
+                    font-size: 1.2rem;
+
+                    &:hover {
+                        background-color: rgba(white, .15);
+						color: rgba(white, .9);
+                    }
+                }
+            }
+        }
+    }
+
