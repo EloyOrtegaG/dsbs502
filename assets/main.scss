@@ -546,7 +546,7 @@ header {
 		max-width: 280px;
 		img { 
 		//	border-radius:15px;
-		border: 9px solid #fff;
+		//border: 9px solid #fff;
 		}
 		//border-radius:15px;
     	//box-shadow:0 16px 28px 0 rgba(8,56,103,.5);
@@ -626,6 +626,9 @@ header {
 /*eo helper*/
 .list-style-none {
 	list-style: none;
+}
+.grayscale-100 {
+	filter: grayscale(100%);
 }
 
 /*Overlapping*/
