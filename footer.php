@@ -9,6 +9,7 @@
 					?>
 
 				</div><!-- /.row -->
+			</div><!-- /.container eo -->
 			<?php
 				endif;
 			?>

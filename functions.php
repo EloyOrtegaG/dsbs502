@@ -592,3 +592,9 @@ function dsbs502_scripts_loader() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'dsbs502_scripts_loader' );
+
+
+function admin_style() {
+    wp_enqueue_style('admin-styles', get_stylesheet_directory_uri().'/admin/admin.css');
+  }
+  add_action('admin_enqueue_scripts', 'admin_style');

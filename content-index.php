@@ -4,7 +4,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-sm-6' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-md-6 col-lg-4' ); ?>>
 	<div class="card mb-4">
 		<header class="card-body">
 			<h2 class="card-title">
@@ -34,11 +34,11 @@
 						echo '<div class="post-thumbnail">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
 					}
 
-					if ( is_search() ) {
+					
 						the_excerpt();
-					} else {
-						the_content();
-					}
+					
+					
+					
 				?>
 				<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . esc_html__( 'Pages:', 'dsbs502' ) . '</span>', 'after' => '</div>' ) ); ?>
 			</div><!-- /.card-text -->

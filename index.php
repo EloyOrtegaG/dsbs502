@@ -10,6 +10,7 @@ get_header();
 $page_id = get_option( 'page_for_posts' );
 ?>
 <div class="row">
+	<h2>BLOG</h2>
 	<div class="col-md-12">
 		<?php
 			echo apply_filters( 'the_content', get_post_field( 'post_content', $page_id ) );

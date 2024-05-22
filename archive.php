@@ -22,6 +22,7 @@ if ( have_posts() ) :
 		?>
 	</h1>
 </header>
+<h2>Archive.php</h2>
 <?php
 	get_template_part( 'archive', 'loop' );
 else :
