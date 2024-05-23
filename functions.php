@@ -583,7 +583,16 @@ function dsbs502_scripts_loader() {
 	// 2. Scripts.
 	//wp_enqueue_script( 'headroomjs', get_theme_file_uri( 'build/headroom.js' ), array(), $theme_version, true );
 	wp_enqueue_script( 'hr_js', get_theme_file_uri( 'jsds/headroom.min.js' ), array(), $theme_version, true );
-	//wp_enqueue_script('hr_js', get_template_directory_uri() . '/jsds/headroom.min.js', '','', true );    
+
+	
+//wp_enqueue_script( 'planos_js02', get_theme_file_uri( 'jsds/jquery.rwdImageMaps.js' ), array(), $theme_version, true );
+wp_enqueue_script( 'planos_js03', get_theme_file_uri( 'jsds/jquery.rwdImageMaps.min.js' ), array(), $theme_version, true );
+	wp_enqueue_script( 'mapas_js', get_theme_file_uri( 'jsds/mapas.js' ), array(), $theme_version, true );
+	wp_enqueue_script( 'maphilight_js', get_theme_file_uri( 'jsds/jquery.maphilight.min.js' ), array(), $theme_version, true );
+	
+	
+	
+
 	wp_enqueue_script( 'mainjs', get_theme_file_uri( 'build/main.js' ), array(), $theme_version, true );
 	
 

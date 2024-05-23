@@ -1014,3 +1014,41 @@ header {
 	}	 
 	  
 }
+
+
+/*plano interactivo mapa sensible*/
+
+#planoTipos{display:inline-flex}
+#planoTipos li{list-style:none;margin-left:2em}
+/*#planoTipos li:before{content:"o ";color:red;font-size:.4em}*/
+#planoTipos li:first-child{margin-left:.5em}
+#plano-puestos figure{position:relative;margin:0 0 1em 0;padding-bottom:1em}
+#plano-puestos figure figcaption,#cartelPuesto{text-align:center;width:100%}
+#plano-puestos figure figcaption{font-style:italic;font-size:.65em}
+#cartelPuesto{margin:1em 0;font-size:1em}
+#nombrePuesto{border:1px solid #000;font-size:1.25em;margin:0 auto;min-height:2.5em;min-width:100%;padding:1em 0;text-align:center;width:fit-content}
+#nombrePuesto br{line-height:1.5em}
+#nombrePuesto small{font-size:.7em}
+#plano-puestos a:visited,#plano-puestos a:hover,#plano-puestos a:focus,#plano-puestos a:active{color:transparent;font-size:.4em}
+#imagenPlano{height:auto;width:100%}
+.posAbs{position:absolute}
+.colorTitular{color:#3e5153}
+.colorVerdeClaro{color:#37b373}/*#34a289 #399a84  */
+.colorVerdeClaroBrillante{color:#2eb135}
+.colorVerdeOscuro{color:#028c6c}
+.colorCarniceria{color:#e70033}
+.colorEcopuestos{color:#66bc29}
+.colorFruteria{color:#66bc29}
+.colorGastrobares{color:#929ea5}
+.colorOtros{color:#b7007a}
+.colorPescaderia{color:#26aadc}
+.colorPolleria{color:#b7007a}
+.fondoCarniceria{background-color:#e70033}
+.fondoEcopuestos{background-color:#66bc29}
+.fondoFruteria{background-color:#66bc29}
+.fondoGastrobares{background-color:#929ea5}
+.fondoOtros{background-color:#b7007a}
+.fondoPescaderia{background-color:#26aadc}
+.fondoPolleria{background-color:#b7007a}
+
+
