@@ -598,3 +598,11 @@ function admin_style() {
     wp_enqueue_style('admin-styles', get_stylesheet_directory_uri().'/admin/admin.css');
   }
   add_action('admin_enqueue_scripts', 'admin_style');
+
+  function new_excerpt_length($length) {
+
+	return 20;
+	
+	}
+	
+	add_filter('excerpt_length', 'new_excerpt_length');

@@ -4,47 +4,32 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-md-6 col-lg-4' ); ?>>
-	<div class="card mb-4">
-		<header class="card-body">
-			<h2 class="card-title">
-				<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'dsbs502' ), the_title_attribute( array( 'echo' => false ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
-			</h2>
-			<?php
-				if ( 'post' === get_post_type() ) :
-			?>
-				<div class="card-text entry-meta">
-					<?php
-						dsbs502_article_posted_on();
-
-						$num_comments = get_comments_number();
-						if ( comments_open() && $num_comments >= 1 ) :
-							echo ' <a href="' . esc_url( get_comments_link() ) . '" class="badge badge-pill bg-secondary float-end" title="' . esc_attr( sprintf( _n( '%s Comment', '%s Comments', $num_comments, 'dsbs502' ), $num_comments ) ) . '">' . $num_comments . '</a>';
-						endif;
-					?>
-				</div><!-- /.entry-meta -->
-			<?php
-				endif;
-			?>
-		</header>
+<article id="post-<?php the_ID(); ?>" <?php post_class('col-md-6 col-lg-4'); ?>>
+	<div class="card texto-sobre-foto">
+		<a href="<?php the_permalink() ?>" title="Leer más">
+			<div class="overlay-min-blog"></div>
+			<?php if (has_post_thumbnail($post->ID)): ?>
+				<?php the_post_thumbnail('min-blog', array('class' => 'card-img-top img-fluid')); ?>
+			<?php else: ?>
+				<img src="<?php echo get_template_directory_uri(); ?>/build/images/mercado-exterior-limpio-sin-cielo.jpg"
+					class="img-responsive" alt="<?php the_title(); ?>">
+			<?php endif; ?>
+		</a>
 		<div class="card-body">
-			<div class="card-text entry-content">
-				<?php
-					if ( has_post_thumbnail() ) {
-						echo '<div class="post-thumbnail">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
-					}
 
-					
-						the_excerpt();
-					
-					
-					
-				?>
-				<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . esc_html__( 'Pages:', 'dsbs502' ) . '</span>', 'after' => '</div>' ) ); ?>
-			</div><!-- /.card-text -->
-			<footer class="entry-meta">
-				<a href="<?php the_permalink(); ?>" class="btn btn-outline-secondary"><?php esc_html_e( 'more', 'dsbs502' ); ?></a>
-			</footer><!-- /.entry-meta -->
-		</div><!-- /.card-body -->
-	</div><!-- /.col -->
+			<p class="datos-noticia">
+				<!--<i class="fa fa-user"></i> <?php the_author(); ?> | -->
+				<?php the_time('j, F Y'); ?>
+			</p>
+			<div class="text-min">
+				<h2><a href="<?php the_permalink(); ?>"
+						class="stretched-link"><?php the_title(); ?></a></h2>
+				<p>
+					<?php the_excerpt(); ?>
+				</p>
+			</div>
+
+
+		</div>
+	</div> <!-- /.col -->
 </article><!-- /#post-<?php the_ID(); ?> -->
