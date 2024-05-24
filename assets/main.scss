@@ -1018,7 +1018,13 @@ header {
 
 /*plano interactivo mapa sensible*/
 
-#planoTipos{display:inline-flex}
+.item_introtext {
+	width: 100%;
+}
+
+
+#planoTipos{display:flex;
+flex-wrap: wrap;}
 #planoTipos li{list-style:none;margin-left:2em}
 /*#planoTipos li:before{content:"o ";color:red;font-size:.4em}*/
 #planoTipos li:first-child{margin-left:.5em}
@@ -1052,3 +1058,10 @@ header {
 .fondoPolleria{background-color:#b7007a}
 
 
+/*Google Maps*/
+.contact-miscinfo iframe {
+
+  object-fit: cover;
+  aspect-ratio: 3 / 1;
+
+}
