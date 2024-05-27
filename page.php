@@ -12,9 +12,9 @@ the_post();
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-8 order-md-2 col-sm-12">
+		<div class="col-12">
 			<div id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<!-- <h1 class="entry-title"><?php the_title(); ?></h1> -->
 				<?php
 					the_content();
 	
@@ -39,9 +39,7 @@ the_post();
 				}
 			?>
 		</div><!-- /.col -->
-		<?php
-			get_sidebar();
-		?>
+	
 	</div><!-- /.row -->
 </div><!-- /.container eo -->
 <?php
