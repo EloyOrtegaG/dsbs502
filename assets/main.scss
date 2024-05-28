@@ -61,15 +61,15 @@ $cyan: #0dcaf0;
 
 
 /* scss-docs-start grid-breakpoints*/
-/*$grid-breakpoints: (
+$grid-breakpoints: (
 	xs: 0,
 	sm: 576px,
 	md: 768px,
 	lg: 992px,
 	xl: 1200px,
 	xxl: 1400px,
-	xxxl: 1580px
-);*/
+	xxxl: 1600px
+);
 // scss-docs-end grid-breakpoints
 
 // Grid containers
@@ -78,14 +78,14 @@ $cyan: #0dcaf0;
 
 // scss-docs-start container-max-widths
 
-/*$container-max-widths: (
+$container-max-widths: (
 	sm: 540px,
 	md: 758px,
 	lg: 990px,
 	xl: 1140px,
 	xxl: 1320px,
 	xxxl: 1520px
-);*/
+);
 
 // Fonts
 $font-family-sans-serif: 'Inter',
@@ -307,6 +307,15 @@ main {
 	h4 {
 		font-size: 1.2rem;
 	}
+
+.wp-block-latest-posts__list.wp-block-latest-posts {
+ li {
+	border-bottom: 1px solid;
+	line-height: 1.3;
+	padding: .5rem 0;
+ }
+}
+
 }
 .widget-area {
 	ul {
@@ -1018,6 +1027,47 @@ header {
 	}	 
 	  
 }
+
+.paginador {
+	margin-top: 40px;
+	margin-bottom: 50px;
+	padding-top: 20px;
+	border-top: 1px dotted $gray-300;
+  }
+  
+  .page-numbers {
+	clear: both;
+	position: relative;
+	background: $gray-200;
+	color: #333;
+	padding: 10px;
+	font-size: .9rem;
+	font-weight: 500;
+	width: auto;
+  
+	a, span {
+	  display: block;
+	  float: left;
+	  margin: 0 1px;
+	  padding: 5px;
+	  text-decoration: none;
+	  text-align: center;
+	  width: auto;
+	}
+  
+	a span {
+	  padding: 0;
+	}
+  
+	&.current {
+	  background: $primary;
+	  color: #fff;
+	}
+  }
+  
+  a.page-numbers:hover {
+	background: $gray-400;
+  }
 
 
 /*plano interactivo mapa sensible*/

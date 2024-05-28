@@ -37,11 +37,11 @@
 							wp_nav_menu(
 								array(
 									'container'       => 'nav',
-									'container_class' => 'col-md-6',
+									//'container_class' => 'col-md-6',
 									//'fallback_cb'     => 'WP_Bootstrap4_Navwalker_Footer::fallback',
 									'walker'          => new WP_Bootstrap4_Navwalker_Footer(),
 									'theme_location'  => 'footer-menu',
-									'items_wrap'      => '<ul class="menu nav justify-content-end text-end">%3$s</ul>',
+									'items_wrap'      => '<ul class="menu nav flex-column text-end">%3$s</ul>',
 								)
 							);
 						endif;
