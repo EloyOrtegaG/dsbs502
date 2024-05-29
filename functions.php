@@ -866,6 +866,11 @@ function puesto_meta_box_markup($object)
                 <label for="meta-box-puesto-tarjetacomercio">Tarjeta comercio de Álava </label>            
                 <textarea rows="4" cols="27" name="meta-box-puesto-tarjetacomercio"><?php echo get_post_meta($object->ID, "meta-box-puesto-tarjetacomercio", true); ?></textarea>
             </div>   
+
+			<div>
+                <label for="meta-box-puesto-especialidad">Especialidad </label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-especialidad"><?php echo get_post_meta($object->ID, "meta-box-puesto-especialidad", true); ?></textarea>
+            </div>   
             
             <div>
                 <label for="meta-box-puesto-orden">Orden</label>
@@ -901,6 +906,7 @@ function save_puesto_meta_box($post_id, $post, $update)
 	$meta_box_puesto_web_value = "";
 	$meta_box_puesto_rrss_value = "";
 	$meta_box_puesto_tarjetacomercio_value = "";
+	$meta_box_puesto_especialidad_value = "";
     $meta_box_puesto_orden_value = "";
          
     
@@ -952,7 +958,13 @@ function save_puesto_meta_box($post_id, $post, $update)
     }   
     update_post_meta($post_id, "meta-box-puesto-tarjetacomercio", $meta_box_puesto_tarjetacomercio_value);
 
-    
+
+	f(isset($_POST["meta-box-puesto-especialidad"]))
+    {
+        $meta_box_puesto_especialidad_value = $_POST["meta-box-puesto-especialidad"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-especialidad", $meta_box_puesto_especialidad_value);
+
         
     if(isset($_POST["meta-box-puesto-orden"]))
     {
