@@ -959,7 +959,7 @@ function save_puesto_meta_box($post_id, $post, $update)
     update_post_meta($post_id, "meta-box-puesto-tarjetacomercio", $meta_box_puesto_tarjetacomercio_value);
 
 
-	f(isset($_POST["meta-box-puesto-especialidad"]))
+	if(isset($_POST["meta-box-puesto-especialidad"]))
     {
         $meta_box_puesto_especialidad_value = $_POST["meta-box-puesto-especialidad"];
     }   
