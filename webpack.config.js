@@ -23,7 +23,7 @@ module.exports = {
 			liveReload: true,
 			hot: false,
 			compress: true,
-			devMiddleware: {
+			devMiddleware: {	
 				writeToDisk: true,
 			},
 		},

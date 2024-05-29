@@ -704,3 +704,270 @@ add_action('init', function () {
         remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
     }
 });
+
+
+
+
+/*Custom Posts*/
+
+/*  Puestos */
+// La función no será utilizada antes del 'init'.
+add_action( 'init', 'crear_post_type_puesto' );
+/* Here's how to create your customized labels */
+function crear_post_type_puesto() {
+    $labels = array(
+    'name' => _x( 'Puestos', 'post type general name' ),
+        'singular_name' => _x( 'Puesto', 'post type singular name' ),
+        'add_new' => _x( 'Añadir nuevo', 'puesto' ),
+        'add_new_item' => __( 'Añadir nuevo puesto' ),
+        'edit_item' => __( 'Editar puesto' ),
+        'new_item' => __( 'Nuevo puesto' ),
+        'view_item' => __( 'Ver puesto' ),
+        'search_items' => __( 'Buscar puestos' ),
+        'not_found' =>  __( 'No se han encontrado puestos' ),
+        'not_found_in_trash' => __( 'No se han encontrado puestos en la papelera' ),
+        'parent_item_colon' => ''
+    );
+ 
+    // Creamos un array para $args
+    $args = array( 'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'query_var' => true,
+        'rewrite' => array(
+            //'slug'       => strtolower(pll__('Puestos')),
+            'slug'       => 'puestos',
+            'with_front' => false,
+        ),
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'menu_position' => null,
+        'menu_icon' => 'dashicons-admin-multisite',
+        'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+        'show_in_rest' => true
+    );
+ 
+    register_post_type( 'puesto', $args ); /* Registramos y a funcionar */
+}
+/*Fin post type puestos*/
+
+// Lo enganchamos en la acción init y llamamos a la función create_proyecto_taxonomies() cuando arranque
+add_action( 'init', 'create_puesto_taxonomies', 0 );
+ 
+// Creamos dos taxonomías, Tipo Puesto y Tag para el custom post type "puesto"
+function create_puesto_taxonomies() {
+    // Añadimos nueva taxonomía y la hacemos jerárquica (como las categorías por defecto)
+    $labels = array(
+    'name' => _x( 'categorias-puesto', 'taxonomy general name' ),
+    'singular_name' => _x( 'Categoría de Puesto', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Buscar por Categoría de Puesto' ),
+    'all_items' => __( 'Todos las Categorías de Puesto' ),
+    'parent_item' => __( 'Tipo Puesto padre' ),
+    'parent_item_colon' => __( 'Categoría de Puesto padre:' ),
+    'edit_item' => __( 'Editar Categoría de Puesto' ),
+    'update_item' => __( 'Actualizar Categoría de Puesto' ),
+    'add_new_item' => __( 'Añadir nueva Categoría de Puesto' ),
+    'new_item_name' => __( 'Nombre del nueva Categoría de Puesto' ),
+);
+register_taxonomy( 'categorias-puesto', array( 'puesto' ), array(
+    'hierarchical' => true,
+    'labels' => $labels, /* ADVERTENCIA: Aquí es donde se utiliza la variable $labels */
+    'show_ui' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'categoria-puesto' ),
+));
+
+} // Fin de la función create_puesto_taxonomies().
+
+/*columnas testim wpadmin*/
+/*cargarlos*/
+ // adding our table columns with this function:  
+function puesto_custom_table_head( $defaults ) {  
+    $defaults['thumbnail']   = 'Imagen'; 
+    $defaults['orden']   = 'Orden';  
+    return $defaults;  
+}  
+// change the _event_ part in the filter name to your CPT slug  
+add_filter('manage_puesto_posts_columns', 'puesto_custom_table_head');  
+  
+  
+// now let's fill our new columns with post meta content  
+function puesto_custom_table_content( $column_name, $post_id ) {  
+    if ($column_name == 'thumbnail') {  echo get_the_post_thumbnail( $post_id, array(80, 80) );
+        
+    } 
+    if ($column_name == 'orden') { 
+        echo get_post_meta( $post_id, 'meta-box-puesto-orden', true ); 
+    } 
+} 
+// change the _event_ part in the filter name to your CPT slug 
+add_action( 'manage_puesto_posts_custom_column', 'puesto_custom_table_content', 10, 2 );  
+
+/*ORDENARLOS FILTRO*/
+add_filter( 'manage_edit-puesto_sortable_columns', 'my_puesto_sortable_columns' );
+
+function my_puesto_sortable_columns( $columns ) {
+    $defaults['thumbnail']   = 'Imagen'; 
+    $columns['orden'] = 'orden';
+
+    return $columns;    
+}
+
+
+
+/*Propiedades puestos*/
+/*1*/
+
+function add_puesto_meta_box()
+{
+    add_meta_box("puesto-meta-box", "Propiedades puesto", "puesto_meta_box_markup", "puesto", "normal", "high", null);
+}
+
+add_action("add_meta_boxes", "add_puesto_meta_box");
+/*2*/
+function puesto_meta_box_markup($object)
+{
+    wp_nonce_field(basename(__FILE__), "meta-box-nonce");
+
+    ?>
+
+        <div class="metaboxes-en-linea">         
+            <div>
+                <label for="meta-box-puesto-numpuesto">Número de puesto </label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-numpuesto"><?php echo get_post_meta($object->ID, "meta-box-puesto-numpuesto", true); ?></textarea>
+            </div>
+            <div>
+                <label for="meta-box-puesto-telefono">Teléfono</label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-telefono"><?php echo get_post_meta($object->ID, "meta-box-puesto-telefono", true); ?></textarea>
+            </div>
+            
+            <div>
+                <label for="meta-box-puesto-movil">Móvil</label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-movil"><?php echo get_post_meta($object->ID, "meta-box-puesto-movil", true); ?></textarea>
+            </div>                                             
+			<div>
+
+                <label for="meta-box-puesto-correoe">Correo electrónico</label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-correoe"><?php echo get_post_meta($object->ID, "meta-box-puesto-correoe", true); ?></textarea>
+            </div>   
+
+			<div>
+                <label for="meta-box-puesto-web">Web</label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-web"><?php echo get_post_meta($object->ID, "meta-box-puesto-web", true); ?></textarea>
+            </div>   
+            
+            <div>
+                <label for="meta-box-puesto-rrss">RRSS</label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-rrss"><?php echo get_post_meta($object->ID, "meta-box-puesto-rrss", true); ?></textarea>
+            </div>
+
+			<div>
+                <label for="meta-box-puesto-tarjetacomercio">Tarjeta comercio de Álava </label>            
+                <textarea rows="4" cols="27" name="meta-box-puesto-tarjetacomercio"><?php echo get_post_meta($object->ID, "meta-box-puesto-tarjetacomercio", true); ?></textarea>
+            </div>   
+            
+            <div>
+                <label for="meta-box-puesto-orden">Orden</label>
+                <input name="meta-box-puesto-orden" type="text" size="2" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-orden", true); ?>">
+            </div>
+            
+
+        </div>
+
+    <?php  
+}
+
+/*3*/
+function save_puesto_meta_box($post_id, $post, $update)
+{
+    if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
+        return $post_id;
+
+    if(!current_user_can("edit_post", $post_id))
+        return $post_id;
+
+    if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
+        return $post_id;
+
+    $slug = "puesto";
+    if($slug != $post->post_type)
+        return $post_id;
+    
+    $meta_box_puesto_numpuesto_value = "";      
+    $meta_box_puesto_telefono_value = "";       
+    $meta_box_puesto_movil_value = "";      
+    $meta_box_puesto_correoe_value = "";
+	$meta_box_puesto_web_value = "";
+	$meta_box_puesto_rrss_value = "";
+	$meta_box_puesto_tarjetacomercio_value = "";
+    $meta_box_puesto_orden_value = "";
+         
+    
+
+    if(isset($_POST["meta-box-puesto-numpuesto"]))
+    {
+        $meta_box_puesto_numpuesto_value = $_POST["meta-box-puesto-numpuesto"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-numpuesto", $meta_box_puesto_numpuesto_value);
+	
+
+    if(isset($_POST["meta-box-puesto-telefono"]))
+    {
+        $meta_box_puesto_telefono_value = $_POST["meta-box-puesto-telefono"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-telefono", $meta_box_puesto_telefono_value);
+    
+    
+    if(isset($_POST["meta-box-puesto-movil"]))
+    {
+        $meta_box_puesto_movil_value = $_POST["meta-box-puesto-movil"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-movil", $meta_box_puesto_movil_value);
+
+
+	if(isset($_POST["meta-box-puesto-correoe"]))
+    {
+        $meta_box_puesto_correoe_value = $_POST["meta-box-puesto-correoe"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-correoe", $meta_box_puesto_correoe_value);
+
+	if(isset($_POST["meta-box-puesto-web"]))
+    {
+        $meta_box_puesto_web_value = $_POST["meta-box-puesto-web"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-web", $meta_box_puesto_web_value);
+
+    
+    if(isset($_POST["meta-box-puesto-rrss"]))
+    {
+        $meta_box_puesto_rrss_value = $_POST["meta-box-puesto-rrss"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-rrss", $meta_box_puesto_rrss_value);
+
+	
+	if(isset($_POST["meta-box-puesto-tarjetacomercio"]))
+    {
+        $meta_box_puesto_tarjetacomercio_value = $_POST["meta-box-puesto-tarjetacomercio"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-tarjetacomercio", $meta_box_puesto_tarjetacomercio_value);
+
+    
+        
+    if(isset($_POST["meta-box-puesto-orden"]))
+    {
+        $meta_box_puesto_orden_value = $_POST["meta-box-puesto-orden"];
+    }   
+    update_post_meta($post_id, "meta-box-puesto-orden", $meta_box_puesto_orden_value);
+
+     
+}
+
+add_action("save_post", "save_puesto_meta_box", 10, 3);
+
+/*Fin MetaBoxes puestos*/
+
+
+
+/**/
+
