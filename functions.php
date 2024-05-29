@@ -586,7 +586,7 @@ function dsbs502_scripts_loader() {
 
 	
 //wp_enqueue_script( 'planos_js02', get_theme_file_uri( 'jsds/jquery.rwdImageMaps.js' ), array(), $theme_version, true );
-//wp_enqueue_script( 'sc_js', get_theme_file_uri( 'jsds/scripts.js' ), array(), $theme_version, true );
+wp_enqueue_script( 'sc_js', get_theme_file_uri( 'jsds/scripts.js' ), array(), $theme_version, true );
 wp_enqueue_script( 'maphilight_js', get_theme_file_uri( 'jsds/jquery.maphilight.min.js' ), array(), $theme_version, true );
 wp_enqueue_script( 'planos_js03', get_theme_file_uri( 'jsds/jquery.rwdImageMaps.min.js' ), array(), $theme_version, true );
 	wp_enqueue_script( 'mapas_js', get_theme_file_uri( 'jsds/mapas.js' ), array(), $theme_version, true );
