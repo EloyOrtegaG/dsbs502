@@ -545,6 +545,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 			'main-menu'   => 'Main Navigation Menu',
 			'footer-menu' => 'Footer Menu',
 			'mercado-menu' => 'Mercado Menu',
+			'puestos-menu' => 'Puestos Menu',
 		)
 	);
 }
@@ -559,6 +560,8 @@ $custom_walker_footer = __DIR__ . '/inc/wp-bootstrap-navwalker-footer.php';
 if ( is_readable( $custom_walker_footer ) ) {
 	require_once $custom_walker_footer;
 }
+
+
 
 /**
  * Loading All CSS Stylesheets and Javascript Files.
