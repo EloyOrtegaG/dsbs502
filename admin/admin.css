@@ -1,3 +1,17 @@
 .components-custom-gradient-picker__gradient-bar .components-custom-gradient-picker__control-point-button {
     outline: 2px solid #a74d4db3 !important;
 }
+
+.metaboxes-en-linea {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    label {
+        display: block;
+    }
+    /*.meta-box-puesto-orden {
+        align-self: center;
+    }*/
+}
+

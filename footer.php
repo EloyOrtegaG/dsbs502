@@ -62,7 +62,7 @@
 						</div>
 					
 				</div><!-- /.row -->
-				<div class="row">
+				<div class="row mt-5">
 				<p class="text-end"><?php printf( esc_html__( '&copy; %1$s %2$s.', 'dsbs502' ), wp_date( 'Y' ), get_bloginfo( 'name', 'display' ) ); ?></p>
 				</div>
 			</div><!-- /.container -->

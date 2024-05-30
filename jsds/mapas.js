@@ -1,6 +1,30 @@
 jQuery(function($) {});
 $$_=jQuery.noConflict();
 $$_(function($) {
+	// Agrega la declaración de estilo al documento
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = `
+    ul.nav span{cursor:pointer}
+    ul.nav span:hover{font-weight:700}
+    ul.nav ul{display:none}
+    /*ul.nav li:hover ul{display:block}*/
+    ul.nav ul li{line-height:1em}
+    ul.nav ul.menuEtiqActivo{display:block}
+    #planoTipos li{
+        /*border-bottom:1px solid #ccc;
+        border-left:1px solid #ccc;
+        border-radius:.6em;*/
+        border-top:4px solid #ccc;
+        padding:0 .1em 0 .2em
+    }
+    .span9 .item_introtext{width:100%}
+    `;
+    document.head.appendChild(style);
+ 
+    // Marca que el estilo del menú ha sido añadido
+    window.estiloMenu = true;
+
 	$('#imagenPlano').rwdImageMaps();
 	idioma=$('html').attr('lang');
 	cadenas={
@@ -79,7 +103,7 @@ $$_(function($) {
 	// Resaltar tipos
 	cadTemp="";
 	for (i=0; i<tipos.length; i++){
-		if (typeOf($("#ver"+tipos[i]))!="undefined"){
+		if (typeof($("#ver"+tipos[i]))!="undefined"){
 			$("#ver"+tipos[i]).css("border-color","#"+$("#ver"+tipos[i]).data("color"));
 			$("#ver"+tipos[i]).mouseover(function(e) {
 				$(this).css("cursor","pointer");

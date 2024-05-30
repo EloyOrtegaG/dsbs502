@@ -745,7 +745,8 @@ function crear_post_type_puesto() {
         'menu_position' => null,
         'menu_icon' => 'dashicons-admin-multisite',
         'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
-        'show_in_rest' => true
+        'show_in_rest' => true,
+		'has_archive' => false,
     );
  
     register_post_type( 'puesto', $args ); /* Registramos y a funcionar */
@@ -759,23 +760,47 @@ add_action( 'init', 'create_puesto_taxonomies', 0 );
 function create_puesto_taxonomies() {
     // Añadimos nueva taxonomía y la hacemos jerárquica (como las categorías por defecto)
     $labels = array(
-    'name' => _x( 'categorias-puesto', 'taxonomy general name' ),
-    'singular_name' => _x( 'Categoría de Puesto', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Buscar por Categoría de Puesto' ),
-    'all_items' => __( 'Todos las Categorías de Puesto' ),
+    'name' => _x( 'Plantas', 'taxonomy general name' ),
+    'singular_name' => _x( 'Planta de Puesto', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Buscar por Planta de Puesto' ),
+    'all_items' => __( 'Todos las Plantas de Puesto' ),
     'parent_item' => __( 'Tipo Puesto padre' ),
-    'parent_item_colon' => __( 'Categoría de Puesto padre:' ),
-    'edit_item' => __( 'Editar Categoría de Puesto' ),
-    'update_item' => __( 'Actualizar Categoría de Puesto' ),
-    'add_new_item' => __( 'Añadir nueva Categoría de Puesto' ),
-    'new_item_name' => __( 'Nombre del nueva Categoría de Puesto' ),
+    'parent_item_colon' => __( 'Planta de Puesto padre:' ),
+    'edit_item' => __( 'Editar Planta de Puesto' ),
+    'update_item' => __( 'Actualizar Planta de Puesto' ),
+    'add_new_item' => __( 'Añadir nueva Planta de Puesto' ),
+    'new_item_name' => __( 'Nombre del nueva Planta de Puesto' ),
+	
 );
-register_taxonomy( 'categorias-puesto', array( 'puesto' ), array(
+register_taxonomy( 'plantas-puesto', array( 'puesto' ), array(
     'hierarchical' => true,
     'labels' => $labels, /* ADVERTENCIA: Aquí es donde se utiliza la variable $labels */
     'show_ui' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'categoria-puesto' ),
+    'rewrite' => array( 'slug' => 'planta-puesto' ),
+	'show_in_rest' => true,
+));
+
+$labels = array(
+    'name' => _x( 'Gremios', 'taxonomy general name' ),
+    'singular_name' => _x( 'Gremio de Puesto', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Buscar por Gremio de Puesto' ),
+    'all_items' => __( 'Todos los Gremios de Puesto' ),
+    'parent_item' => __( 'Tipo Puesto padre' ),
+    'parent_item_colon' => __( 'Gremio de Puesto padre:' ),
+    'edit_item' => __( 'Editar Gremio de Puesto' ),
+    'update_item' => __( 'Actualizar Gremio de Puesto' ),
+    'add_new_item' => __( 'Añadir nuevo Gremio de Puesto' ),
+    'new_item_name' => __( 'Nombre del nuevo Gremio de Puesto' ),
+	
+);
+register_taxonomy( 'gremios-puesto', array( 'puesto' ), array(
+    'hierarchical' => true,
+    'labels' => $labels, /* ADVERTENCIA: Aquí es donde se utiliza la variable $labels */
+    'show_ui' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'gremio-puesto' ),
+	'show_in_rest' => true,
 ));
 
 } // Fin de la función create_puesto_taxonomies().
@@ -832,49 +857,59 @@ function puesto_meta_box_markup($object)
 
     ?>
 
-        <div class="metaboxes-en-linea">         
+        <div class="metaboxes-en-linea d-flex">         
             <div>
-                <label for="meta-box-puesto-numpuesto">Número de puesto </label>            
-                <textarea rows="4" cols="27" name="meta-box-puesto-numpuesto"><?php echo get_post_meta($object->ID, "meta-box-puesto-numpuesto", true); ?></textarea>
+                <label for="meta-box-puesto-numpuesto">Número de puesto </label>                            
+				<input name="meta-box-puesto-numpuesto" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-numpuesto", true); ?>" />
             </div>
             <div>
                 <label for="meta-box-puesto-telefono">Teléfono</label>            
-                <textarea rows="4" cols="27" name="meta-box-puesto-telefono"><?php echo get_post_meta($object->ID, "meta-box-puesto-telefono", true); ?></textarea>
+                <input name="meta-box-puesto-telefono" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-telefono", true); ?>" />
             </div>
             
             <div>
                 <label for="meta-box-puesto-movil">Móvil</label>            
-                <textarea rows="4" cols="27" name="meta-box-puesto-movil"><?php echo get_post_meta($object->ID, "meta-box-puesto-movil", true); ?></textarea>
+                <input name="meta-box-puesto-movil" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-movil", true); ?>" />
             </div>                                             
 			<div>
 
                 <label for="meta-box-puesto-correoe">Correo electrónico</label>            
-                <textarea rows="4" cols="27" name="meta-box-puesto-correoe"><?php echo get_post_meta($object->ID, "meta-box-puesto-correoe", true); ?></textarea>
+                <input name="meta-box-puesto-correoe" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-correoe", true); ?>" />
             </div>   
 
 			<div>
                 <label for="meta-box-puesto-web">Web</label>            
-                <textarea rows="4" cols="27" name="meta-box-puesto-web"><?php echo get_post_meta($object->ID, "meta-box-puesto-web", true); ?></textarea>
+                <input type="text" name="meta-box-puesto-web" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-web", true); ?>" />
             </div>   
             
             <div>
                 <label for="meta-box-puesto-rrss">RRSS</label>            
-                <textarea rows="4" cols="27" name="meta-box-puesto-rrss"><?php echo get_post_meta($object->ID, "meta-box-puesto-rrss", true); ?></textarea>
+                <textarea rows="3" cols="27" name="meta-box-puesto-rrss"><?php echo get_post_meta($object->ID, "meta-box-puesto-rrss", true); ?></textarea>
             </div>
 
-			<div>
+			<!--<div>
                 <label for="meta-box-puesto-tarjetacomercio">Tarjeta comercio de Álava </label>            
                 <textarea rows="4" cols="27" name="meta-box-puesto-tarjetacomercio"><?php echo get_post_meta($object->ID, "meta-box-puesto-tarjetacomercio", true); ?></textarea>
-            </div>   
+            </div>   -->
+
+			<div>
+				<label for="meta-box-puesto-tarjetacomercio">Tarjeta comercio de Álava </label>
+				<select name="meta-box-puesto-tarjetacomercio" id="meta-box-puesto-tarjetacomercio" placeholder="Selecciona">
+				<?php $tarjeta_comercio = get_post_meta( get_the_ID(), 'meta-box-puesto-tarjetacomercio', true );?>
+				 <option value="Selecciona" disabled>Selecciona</option>
+					<option value="Sí" <?php if ($tarjeta_comercio == "si")  echo 'selected'; ?>>Sí</option>
+					<option value="No" <?php if ($tarjeta_comercio == "no")  echo 'selected'; ?>>No</option>
+				</select>
+			</div>
 
 			<div>
                 <label for="meta-box-puesto-especialidad">Especialidad </label>            
                 <textarea rows="4" cols="27" name="meta-box-puesto-especialidad"><?php echo get_post_meta($object->ID, "meta-box-puesto-especialidad", true); ?></textarea>
             </div>   
             
-            <div>
+            <div class="meta-box-puesto-orden">
                 <label for="meta-box-puesto-orden">Orden</label>
-                <input name="meta-box-puesto-orden" type="text" size="2" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-orden", true); ?>">
+                <input name="meta-box-puesto-orden" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-orden", true); ?>">
             </div>
             
 
@@ -978,6 +1013,7 @@ function save_puesto_meta_box($post_id, $post, $update)
 add_action("save_post", "save_puesto_meta_box", 10, 3);
 
 /*Fin MetaBoxes puestos*/
+
 
 
 
