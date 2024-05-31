@@ -7,6 +7,7 @@ get_header();
 <div class="container">
     <div class="row">
         <div class="col-lg-2 pt-5">
+            <h3>Planta baja</h3>
         <?php
 						if ( has_nav_menu( 'puestos-menu' ) ) : // See function register_nav_menus() in functions.php
 							/*
@@ -81,9 +82,9 @@ get_header();
                 <?php endif; ?>
 
                 <?php
-                $rrss = get_post_meta($post->ID, 'meta-box-puesto-rrss', true);
-                if (!empty($rrss)): ?>
-                    <li><span><strong><?php echo pll__('RRSS') . ':'; ?></strong></span>&nbsp;<?php echo $rrss; ?></li>
+                $especialidad = get_post_meta($post->ID, 'meta-box-puesto-especialidad', true);
+                if (!empty($especialidad)): ?>
+                    <li><span><strong><?php echo pll__('Especialidad') . ':'; ?></strong></span>&nbsp;<?php echo $especialidad; ?></li>
                 <?php endif; ?>
 
 
