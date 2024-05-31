@@ -561,6 +561,11 @@ if ( is_readable( $custom_walker_footer ) ) {
 	require_once $custom_walker_footer;
 }
 
+$custom_walker_puestos = __DIR__ . '/inc/wp-bootstrap-navwalker-puestos.php';
+if ( is_readable( $custom_walker_puestos ) ) {
+	require_once $custom_walker_puestos;
+}
+
 
 
 /**
@@ -885,10 +890,10 @@ function puesto_meta_box_markup($object)
                 <input type="text" name="meta-box-puesto-web" value="<?php echo get_post_meta($object->ID, "meta-box-puesto-web", true); ?>" />
             </div>   
             
-            <div>
+            <!-- <div>
                 <label for="meta-box-puesto-rrss">RRSS</label>            
                 <textarea rows="3" cols="27" name="meta-box-puesto-rrss"><?php echo get_post_meta($object->ID, "meta-box-puesto-rrss", true); ?></textarea>
-            </div>
+            </div> -->
 
 			<!--<div>
                 <label for="meta-box-puesto-tarjetacomercio">Tarjeta comercio de Álava </label>            

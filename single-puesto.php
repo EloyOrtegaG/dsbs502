@@ -7,7 +7,11 @@ get_header();
 <div class="container">
     <div class="row">
         <div class="col-lg-2 pt-5">
-            <h3>Planta baja</h3>
+            <h3>
+            <a href="<?php echo get_site_url(); ?>/planta-baja">
+                <?php echo pll__('Planta baja'); ?>
+                </a>
+            </h3>
         <?php
 						if ( has_nav_menu( 'puestos-menu' ) ) : // See function register_nav_menus() in functions.php
 							/*
@@ -18,11 +22,12 @@ get_header();
 							wp_nav_menu(
 								array(
 									'container'       => 'nav',
-									//'container_class' => 'col-md-6',
+                                    //'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+									'container_class' => 'menu-puestos',
 									//'fallback_cb'     => 'WP_Bootstrap4_Navwalker_Puesto::fallback',
-									//'walker'          => new WP_Bootstrap4_Navwalker_Puestos(),
+									'walker'          => new WP_Bootstrap_Navwalker_Puestos(),
 									'theme_location'  => 'puestos-menu',
-									'items_wrap'      => '<ul class="menu nav flex-column text-end">%3$s</ul>',
+									'items_wrap'      => '<ul class="menu nav flex-column">%3$s</ul>',
 								)
 							);
 						endif;
@@ -32,7 +37,9 @@ get_header();
         </div>
         <div class="col-lg-7 px-lg-5">
             <header class="entry-header">
-                <h1 class="entry-title"><?php the_title(); ?></h1>
+                
+                    <h1 class="entry-title"><?php the_title(); ?></h1>
+                
                 <?php
                 if ('post' === get_post_type()):
                     ?>
