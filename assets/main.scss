@@ -162,6 +162,25 @@ $link-decoration: none;
 /**
  * General
  */
+
+
+:root {
+	--Color-Carniceria:#e70033;
+	
+	--Color-Ecopuestos: #66bc29;
+	
+	--Color-Fruteria: #66bc29;
+	
+	--Color-Gastrobares: #929ea5;
+	
+	--Color-Otros: #b7007a;
+	
+	--Color-Pescaderia: #26aadc;
+	
+	--Color-Polleria: #b7007a;
+	
+}
+
 * {
 
 	box-sizing: border-box;
@@ -1217,8 +1236,12 @@ nav.menu-puestos {
 
 				li a {
 					font-size: .9rem;
-					padding: 0;
+					padding: .5rem;
 					color: $gray-700;
+					&.active {
+						background-color: $gray-200;
+						color: $primary;
+					}
 				}
 			}
 		}
@@ -1226,6 +1249,44 @@ nav.menu-puestos {
 	}
 }
 
+
+.cab-puesto {
+	position: relative;
+	height: 300px;
+	.overlay-cabpuesto {
+		position: absolute;
+		z-index: 1;
+		background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(0,0,0,0) 20%,  rgba(0,0,0,.8) 100%);
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		top: 0;
+	}
+	.img-cabpuesto-bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		top: 0;
+		object-fit: cover;
+	}
+	h1 {
+		position: absolute;
+		left: 2rem;
+		bottom: 2rem;
+		z-index: 2;
+		color: white;
+	}
+}
+.sidebar-puesto {
+	z-index: 5;
+	@media (min-width: breakpoint-max(xl)) {
+		margin-top: -5rem;
+	}
+	background-color: $primary;
+	color: white;
+}
 
 
 /*plano interactivo mapa sensible*/
