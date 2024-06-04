@@ -66,8 +66,12 @@ get_header();
 			
 			<?php
                     get_sidebar();
-                    ?>
+            ?>
 			
+			<!-- <div id="ds_sidebar" class="col-lg-3">
+					<?php dynamic_sidebar('ds_sidebar'); ?>
+					</div>  -->
+
 		</div>
 	</div>
 	<?php

@@ -263,7 +263,20 @@ function dsbs502_widgets_init() {
 		)
 	);
 
-	// Area 2.
+// Area 2
+register_sidebar(
+	array(
+		'name'          => 'DS Sidebar',
+		'id'            => 'ds_sidebar',
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	)
+);
+
+
+	// Area 3.
 	register_sidebar(
 		array(
 			'name'          => 'Header Widget 01 (Header 01)',
@@ -275,7 +288,9 @@ function dsbs502_widgets_init() {
 		)
 	);
 
-	// Area 3.
+	
+
+	// Area 4.
 	/*register_sidebar(
 		array(
 			'name'          => 'Header Widget 02 (Header Right)',
@@ -287,7 +302,7 @@ function dsbs502_widgets_init() {
 		)
 	);*/
 
-	// Area 4.
+	// Area 5.
 	register_sidebar(
 		array(
 			'name'          => 'Footer Widget 01',
@@ -298,7 +313,7 @@ function dsbs502_widgets_init() {
 			'after_title'   => '</h3>',
 		)
 	);
-		// Area 5.
+		// Area 6.
 		register_sidebar(
 			array(
 				'name'          => 'Footer Widget 02',

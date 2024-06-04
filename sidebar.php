@@ -40,7 +40,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 									// Show monthly archive and link to months.
 									$month = get_the_date( 'F, Y' );
 									if ( $month !== $month_check ) :
-										$output .= '<a href="' . esc_url( get_month_link( get_the_date( 'Y' ), get_the_date( 'm' ) ) ) . '" title="' . esc_attr( get_the_date( 'F, Y' ) ) . '">' . esc_html( $month ) . '</a>';
+										$output .= '<a class="fecha-noticia-sidebar" href="' . esc_url( get_month_link( get_the_date( 'Y' ), get_the_date( 'm' ) ) ) . '" title="' . esc_attr( get_the_date( 'F, Y' ) ) . '">' . esc_html( $month ) . '</a>';
 									endif;
 									$month_check = $month;
 								//	$the_excerpt = the_excerpt();

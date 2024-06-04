@@ -176,20 +176,20 @@ $link-decoration: none;
 
 
 :root {
-	--Color-Carniceria:#e70033;
-	
+	--Color-Carniceria: #e70033;
+
 	--Color-Ecopuestos: #66bc29;
-	
+
 	--Color-Fruteria: #66bc29;
-	
+
 	--Color-Gastrobares: #929ea5;
-	
+
 	--Color-Otros: #b7007a;
-	
+
 	--Color-Pescaderia: #26aadc;
-	
+
 	--Color-Polleria: #b7007a;
-	
+
 }
 
 * {
@@ -338,12 +338,21 @@ main {
 }
 
 /* Sidebar */
-#sidebar {
+#sidebar,
+#ds_sidebar {
 	h4 {
-		font-size: 1.2rem;
+		font-size: 1.05rem;
+		color: $primary;
 	}
 
-	.wp-block-latest-posts__list.wp-block-latest-posts {
+	.fecha-noticia-sidebar {
+		font-size: .9rem;
+		color: $secondary;
+		margin-top: .5em;
+	}
+
+	.wp-block-latest-posts__list.wp-block-latest-posts,
+	.recentposts {
 		li {
 			border-bottom: 1px solid;
 			line-height: 1.3;
@@ -752,10 +761,11 @@ header {
 				}
 			}
 
-			a:not(&.current-menu-item a):hover span {
+			/*a:not(&.current-menu-item a):hover span {
 				background-color: rgba($primary, .8);
 
-			}
+			}*/
+			//No sé porqué esto afecta a cosas que no están en menu-subcab
 		}
 	}
 }
@@ -1221,18 +1231,22 @@ a.page-numbers:hover {
 /*Menu sidebar puestos*/
 nav.menu-puestos {
 	margin-top: 1.5rem;
-	> ul {
+
+	>ul {
 		padding: 0;
 		margin: 0;
-		> li {
+
+		>li {
 			/*padding-left: 1.25rem;*/
 			border-bottom: 1px solid;
-			> a { font-size: 1.125rem; 
-				letter-spacing: -0.015em; 
+
+			>a {
+				font-size: 1.125rem;
+				letter-spacing: -0.015em;
 				padding: .5rem 0;
 				line-height: 1.2;
 				color: $gray-800;
-			 /*&::before {
+				/*&::before {
 				position: absolute;
                 font-family: 'bootstrap-icons';
 				content: "\F285";
@@ -1243,6 +1257,7 @@ nav.menu-puestos {
 				font-size: .9rem;
 			 }*/
 			}
+
 			ul.dropdown-menu.show {
 				position: relative !important;
 				transform: none !important;
@@ -1253,6 +1268,7 @@ nav.menu-puestos {
 					font-size: .9rem;
 					padding: .5rem;
 					color: $gray-700;
+
 					&.active {
 						background-color: $gray-200;
 						color: $primary;
@@ -1268,16 +1284,18 @@ nav.menu-puestos {
 .cab-puesto {
 	position: relative;
 	height: 300px;
+
 	.overlay-cabpuesto {
 		position: absolute;
 		z-index: 1;
-		background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0,0,0,0) 20%,  rgba(0,0,0,.8) 100%);
+		background: rgb(0, 0, 0);
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .8) 100%);
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		top: 0;
 	}
+
 	.img-cabpuesto-bg {
 		position: absolute;
 		width: 100%;
@@ -1286,6 +1304,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 20%,  rgba(0,0,0,.8) 100%);
 		top: 0;
 		object-fit: cover;
 	}
+
 	h1 {
 		position: absolute;
 		left: 2rem;
@@ -1294,11 +1313,14 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 20%,  rgba(0,0,0,.8) 100%);
 		color: white;
 	}
 }
+
 .sidebar-puesto {
 	z-index: 5;
+
 	@media (min-width: breakpoint-max(xl)) {
 		margin-top: -5rem;
 	}
+
 	background-color: $primary;
 	color: white;
 }
@@ -1502,7 +1524,8 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 20%,  rgba(0,0,0,.8) 100%);
 
 /*Contact Form*/
 .form-mercado {
-/*	span.wpcf7-form-control-wrap, label {
+
+	/*	span.wpcf7-form-control-wrap, label {
 		display: block;
 		width: 100%;
 	}*/
@@ -1524,5 +1547,115 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 20%,  rgba(0,0,0,.8) 100%);
 	position: unset !important;
 	transform: unset !important;
 	width: unset !important;
+
+}
+
+.eventos-home ul.products {
+	list-style: none;
+	display: flex;
+
+	>li {
+		flex: 1;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1em;
+		}
+
+		.button {
+			//display: block;
+			background-color: $primary;
+			color: white;
+			margin-top: 1em;
+			width: fit-content;
+			margin: 1em auto;
+			padding: .5em 1em;
+
+			&:hover {
+				background-color: $secondary;
+			}
+		}
+	}
+}
+
+
+
+
+//EVENT TICKETS MANAGER FOR WOOCOMMERCE
+
+
+
+
+#wps-search-results.wps_list {
+	max-width: 80rem;
+	margin: 2em auto;
+	gap:0;
+ .wps-etmw_single-event {
+	>* {
+		flex: 1;
+	}
+
+	.foto-y-descrip {
+		display: flex;		
+		>* {
+			flex: 1;
+		}
+
+		>img {
+			//	aspect-ratio: 16/9;
+			//max-height: 14rem;
+			align-self: center;
+			object-fit: cover;
+		}
+
+		display: flex !important;
+
+		//grid-template-columns: 50% 50%;
+
+		.wps-etmw_prod-desc {
+			display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: left;	
+			//padding: 4em;
+			//background: #f5f7f9;
+			background: $primary;
+			color: white;
+			.wps-etmw_all-date {
+				color: $gray-300;
+				font-size: .9rem;
+			}
+			.wps-etmw_prod-btn {
+				margin-top: 1em;
+			}
+
+
+		}
+	}
+
+	&:nth-of-type(odd) .foto-y-descrip {
+		flex-direction: row-reverse !important;
+
+	}
+
+	/*&:nth-of-type(odd) {
+				flex-direction: row-reverse !important;
+				.wps-etmw_prod-desc {
+					text-align: right;
+				}
+				}*/
+	.fecha-grande {
+		font-size: 3rem !important;
+		color: $gray-500 !important;
+		align-self: center !important;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+ }
 
 }
