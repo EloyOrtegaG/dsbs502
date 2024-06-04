@@ -16,6 +16,17 @@ $primary: #1A1918;
 $secondary: #5e6975;
 $text-white: #f2f2f2;
 
+
+/**
+
+
+
+
+
+
+
+
+
 // Options
 $enable-dark-mode: true;
 $enable-rounded: true;
@@ -208,7 +219,7 @@ body {
 	h2 {
 		font-size: 2.75rem;
 		font-weight: 600;
-		letter-spacing: -0.02em;
+		letter-spacing: -0.0275em;
 	}
 
 	h3 {
@@ -400,7 +411,7 @@ main {
 ul.datos-puesto {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 1em;
 
 	//border-bottom: 1px solid $primary;
 	li {
@@ -773,6 +784,10 @@ header {
 
 .grayscale-20 {
 	filter: grayscale(20%);
+}
+
+.grayscale-contrast {
+	filter: grayscale(100%) brightness(80%) contrast(220%);
 }
 
 /*Overlapping*/
@@ -1483,6 +1498,18 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 20%,  rgba(0,0,0,.8) 100%);
 
 
 
+
+
+/*Contact Form*/
+.form-mercado {
+/*	span.wpcf7-form-control-wrap, label {
+		display: block;
+		width: 100%;
+	}*/
+	.wpcf7-list-item:has(input[type="checkbox"]) {
+		margin-left: 0;
+	}
+}
 
 
 

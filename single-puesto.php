@@ -35,11 +35,19 @@ get_header();
 
             ?>
         </div>
-        <div class="col-lg-10 px-lg-5">
+        <div class="col-lg-10">
             <header class="entry-header cab-puesto mb-2">
+            <?php if ( has_post_thumbnail($post->ID)) : ?>
                 <?php $thumbnail_id = get_post_thumbnail_id($post->ID);
                 $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>
-                <img class="img-cabpuesto-bg" src="<?php the_post_thumbnail_url(); ?>" alt="<?php echo $alt; ?>" />
+                <img src="<?php the_post_thumbnail_url(); ?>" class="img-cabpuesto-bg" alt="<?php echo $alt; ?>" />
+                <?php else : ?>
+                  <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2024/05/mercado-exterior-limpio-sin-cielo.jpg" class="img-cabpuesto-bg" alt="<?php the_title(); ?>">
+                <?php endif; ?>
+
+                
+                     
+
 
                 <h1 class="entry-title"
                 <?php
@@ -60,12 +68,12 @@ get_header();
                         echo 'style="border-left: 8px solid ' . $ColorFruteria . '; padding-left: 1rem;">';
                     elseif (has_term('carnicerias-y-charcuterias', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorCarniceria . '; padding-left: 1rem;">';   
-                    elseif (has_term('pescaderia', 'gremios-puesto')) :
+                    elseif (has_term('pescaderias', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorPescaderia . '; padding-left: 1rem;">';
                     elseif (has_term('ecopuestos', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorEcopuestos . '; padding-left: 1rem;">';
-                    elseif (has_term('Gastrobares', 'gremios-puesto')) :
-                        echo 'style="border-left: 8px solid ' . $Colorgastrobares . '; padding-left: 1rem;">';
+                    elseif (has_term('gastrobares', 'gremios-puesto')) :
+                        echo 'style="border-left: 8px solid ' . $ColorGastrobares . '; padding-left: 1rem;">';
                     elseif (has_term('otros', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorOtros . '; padding-left: 1rem;">';
                 endif;
@@ -88,7 +96,7 @@ get_header();
             </header><!-- /.entry-header -->
 
             <div class="row">
-                <div class="col-lg-8"><?php the_content(); ?>
+                <div class="col-lg-8 pe-lg-3"><?php the_content(); ?>
                 <div class="mt-5 d-flex">
                 <?php
 
@@ -171,3 +179,4 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
+
