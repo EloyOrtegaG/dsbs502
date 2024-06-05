@@ -1659,3 +1659,28 @@ nav.menu-puestos {
  }
 
 }
+
+/*Ficha evento*/
+
+.wps_etmfw_event_info_section {
+	margin-bottom: 2em;
+	> div {
+		margin-bottom: .5em;
+	}
+	
+}
+
+.woocommerce .quantity .qty {
+	height: 2.2em;
+}
+
+/*Cart*/
+.wc-block-cart__submit-button.contained {
+	background: $primary;
+	color: white;
+	text-transform: uppercase;
+}
+
+.wp-block-woocommerce-cart {
+	margin-top: 2em;
+}
