@@ -81,7 +81,7 @@ function datos_evento() {
 		
 
 		// create a new date format
-		$new_format = Date('Y F d', strtotime($evento_fecha));
+		$new_format = date_i18n('d F Y', strtotime($evento_fecha));
 	
 		// output the new date format with some text
 		echo '<p>Fecha: ' . $new_format . '</p>';
