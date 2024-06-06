@@ -1684,3 +1684,8 @@ nav.menu-puestos {
 .wp-block-woocommerce-cart {
 	margin-top: 2em;
 }
+
+:where(.wc-block-mini-cart__badge) {
+	background-color: rgb(33, 37, 41) !important;
+	color: rgb(248, 249, 250) !important;
+  }

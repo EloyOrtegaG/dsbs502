@@ -609,7 +609,7 @@ function dsbs502_scripts_loader() {
 
 	
 //wp_enqueue_script( 'planos_js02', get_theme_file_uri( 'jsds/jquery.rwdImageMaps.js' ), array(), $theme_version, true );
-wp_enqueue_script( 'sc_js', get_theme_file_uri( 'jsds/scripts.js' ), array(), $theme_version, true );
+//wp_enqueue_script( 'sc_js', get_theme_file_uri( 'jsds/scripts.js' ), array(), $theme_version, true );
 wp_enqueue_script( 'maphilight_js', get_theme_file_uri( 'jsds/jquery.maphilight.min.js' ), array(), $theme_version, true );
 wp_enqueue_script( 'planos_js03', get_theme_file_uri( 'jsds/jquery.rwdImageMaps.min.js' ), array(), $theme_version, true );
 	wp_enqueue_script( 'mapas_js', get_theme_file_uri( 'jsds/mapas.js' ), array(), $theme_version, true );
@@ -1041,4 +1041,49 @@ add_action("save_post", "save_puesto_meta_box", 10, 3);
 
 
 /**/
+
+
+/*Metaboxes Woomcomerce */
+//add_meta_box("puesto-meta-box", "Propiedades puesto", "puesto_meta_box_markup", "puesto", "normal", "high", null);
+function add_evento_meta_box() {
+	add_meta_box(
+		'evento_metabox', // Unique ID
+		'Propiedades del evento',    // Meta Box title
+		'metabox_evento_fecha',    // Callback function
+		'product',                         // The selected post type
+		"normal",
+		"high", 
+		null
+	);
+}
+
+add_action( 'add_meta_boxes', 'add_evento_meta_box' );
+
+function metabox_evento_fecha( $post ) {
+
+	$evento_fecha = get_post_meta( $post->ID, '_evento_fecha_meta_key', true );
+
+	?>
+
+	<label for="evento_fecha">Fecha del evento</label>
+	<input name="evento_fecha" type="date" value="<?php echo esc_attr($evento_fecha); ?>">
+
+    <?php
+
+}
+function metabox_evento_fecha_save( $post_id ) {
+	if ( array_key_exists( 'evento_fecha', $_POST ) ) {
+	   update_post_meta(
+		  $post_id,
+		  '_evento_fecha_meta_key',
+		  $_POST['evento_fecha']
+	   );
+	}
+ }
+ 
+ add_action( 'save_post', 'metabox_evento_fecha_save' );
+
+/*Fin MetaBoxes eventos*/
+
+
 
