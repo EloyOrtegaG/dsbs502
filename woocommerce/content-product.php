@@ -46,6 +46,14 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
+	
+	global $product;
+	$my_var = $product->get_id();
+
+	$evento_fecha = get_post_meta( $my_var, '_evento_fecha_meta_key', true );
+		// create a new date format
+		$new_format = date_i18n('d F Y', strtotime($evento_fecha));
+		echo $new_format;
 	do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**

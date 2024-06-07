@@ -417,10 +417,23 @@ main {
 
 }
 
-ul.datos-puesto {
+ul.datos-puesto, ul.datos-evento {
 	list-style: none;
 	margin: 0;
 	padding: 1em;
+
+	//border-bottom: 1px solid $primary;
+	li {
+		border-bottom: 1px solid $primary;
+		padding-top: .5rem;
+		padding-bottom: .5rem;
+	}
+}
+
+ul.datos-evento {
+	list-style: none;
+	margin: 0 0 1.5em;
+	padding: 0;
 
 	//border-bottom: 1px solid $primary;
 	li {

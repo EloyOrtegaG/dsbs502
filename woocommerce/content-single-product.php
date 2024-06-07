@@ -66,25 +66,29 @@ function datos_evento() {
 	//$evento_fecha = get_post_meta( $post->ID, '_evento_fecha_meta_key', true );
 
 	global $product;
-
 	$my_var = $product->get_id();
 
 	$evento_fecha = get_post_meta( $my_var, '_evento_fecha_meta_key', true );
-	//$evento_fecha = get_post_meta( $product->ID, '_evento_fecha_meta_key', true );
-	
-	
-			
-		echo $evento_fecha; 
-
-
-		// get end date (maybe change $post_meta_data to a more appropriate name)
-		
-
 		// create a new date format
 		$new_format = date_i18n('d F Y', strtotime($evento_fecha));
 	
-		// output the new date format with some text
-		echo '<p>Fecha: ' . $new_format . '</p>';
+	$evento_hora = get_post_meta( $my_var, '_evento_hora_meta_key', true );			
+	$evento_lugar = get_post_meta( $my_var, '_evento_lugar_meta_key', true );
+
+	if (!empty($evento_fecha) || !empty($evento_hora) || !empty($evento_lugar)) {
+		echo '<ul class="datos-evento">';}
+	if (!empty($evento_fecha)) {
+		echo '<li><i class="bi bi-calendar-event me-1"></i> ' . $new_format . '</li>';
+		}
+		if (!empty($evento_hora)) {
+			echo '<li><i class="bi bi-clock me-1"></i> ' . $evento_hora . '</li>';
+		}
+		if (!empty($evento_lugar)) {
+			echo '<li><i class="bi bi-geo-alt me-2"></i>' . $evento_lugar . '</li>';
+		}
+		if (!empty($evento_fecha) || !empty($evento_hora) || !empty($evento_lugar)) {
+			echo '</ul>';
+		}
 
 
 	

@@ -1063,11 +1063,27 @@ function metabox_evento_fecha( $post ) {
 
 	$evento_fecha = get_post_meta( $post->ID, '_evento_fecha_meta_key', true );
 
+	$evento_hora = get_post_meta( $post->ID, '_evento_hora_meta_key', true );
+
+	$evento_lugar = get_post_meta( $post->ID, '_evento_lugar_meta_key', true );
+
 	?>
+<div class="metaboxes-en-linea d-flex">         
+	<div>
+		<label for="evento_fecha">Fecha del evento</label>
+		<input name="evento_fecha" type="date" value="<?php echo esc_attr($evento_fecha); ?>">
+	</div>
 
-	<label for="evento_fecha">Fecha del evento</label>
-	<input name="evento_fecha" type="date" value="<?php echo esc_attr($evento_fecha); ?>">
+	<div>
+		<label for="evento_hora">Hora del evento</label>
+		<input name="evento_hora" type="time" value="<?php echo esc_attr($evento_hora); ?>">
+	</div>
 
+	<div>
+		<label for="evento_lugar">Lugar del evento</label>
+		<input name="evento_lugar" type="text" value="<?php echo esc_attr($evento_lugar); ?>">
+	</div>
+</div>
     <?php
 
 }
@@ -1076,11 +1092,26 @@ function metabox_evento_fecha_save( $post_id ) {
 	   update_post_meta(
 		  $post_id,
 		  '_evento_fecha_meta_key',
-		  $_POST['evento_fecha']
-	   );
+		  $_POST['evento_fecha'],		  
+	   );	   
 	}
+
+	if ( array_key_exists( 'evento_hora', $_POST ) ) {
+		update_post_meta(
+		   $post_id,
+		   '_evento_hora_meta_key',
+		   $_POST['evento_hora'],		  
+		);	
  }
- 
+ if ( array_key_exists( 'evento_lugar', $_POST ) ) {
+	update_post_meta(
+	   $post_id,
+	   '_evento_lugar_meta_key',
+	   $_POST['evento_lugar'],		  
+	);
+
+}
+}
  add_action( 'save_post', 'metabox_evento_fecha_save' );
 
 /*Fin MetaBoxes eventos*/
