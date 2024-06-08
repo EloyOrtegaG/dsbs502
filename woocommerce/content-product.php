@@ -52,8 +52,18 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
 	$evento_fecha = get_post_meta( $my_var, '_evento_fecha_meta_key', true );
 		// create a new date format
-		$new_format = date_i18n('d F Y', strtotime($evento_fecha));
-		echo $new_format;
+		$mes = date_i18n('F', strtotime($evento_fecha));
+		$dia = date_i18n('d', strtotime($evento_fecha));
+		$anio = date_i18n('Y', strtotime($evento_fecha));
+		echo '<div class="fecha-sobre-foto">' ;
+		echo '<div class="mes"> ' .  $mes . ' </div>';
+		echo '<div class="dia"> ' .  $dia  .' </div>';
+		echo '<div class="anio"> ' .  $anio  .' </div>';
+		echo '</div>';
+
+		
+
+
 	do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**

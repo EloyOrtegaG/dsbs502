@@ -38,8 +38,7 @@ $search_enabled = get_theme_mod('search_enabled', '1'); // Get custom meta-value
 						
 						if (!empty($header_logo)):
 							?>
-							<img src="<?php echo esc_url($header_logo); ?>"
-								alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" />
+							<img src="<?php echo esc_url($header_logo); ?>" width="147" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" />
 							<?php
 						else:
 							echo esc_attr(get_bloginfo('name', 'display'));

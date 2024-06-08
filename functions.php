@@ -732,6 +732,197 @@ add_action('init', function () {
 
 
 /*Custom Posts*/
+/*  Sliders */
+// La función no será utilizada antes del 'init'.
+add_action( 'init', 'crear_post_type_slider' );
+/* Here's how to create your customized labels */
+function crear_post_type_slider() {
+    $labels = array(
+    'name' => _x( 'SLIDER', 'post type general name' ),
+        'singular_name' => _x( 'Slider', 'post type singular name' ),
+        'add_new' => _x( 'Añadir nuevo', 'slider' ),
+        'add_new_item' => __( 'Añadir nuevo Slider' ),
+        'edit_item' => __( 'Editar Slider' ),
+        'new_item' => __( 'Nuevo Slider' ),
+        'view_item' => __( 'Ver Slider' ),
+        'search_items' => __( 'Buscar Sliders' ),
+        'not_found' =>  __( 'No se han encontrado Sliders' ),
+        'not_found_in_trash' => __( 'No se han encontrado Sliders en la papelera' ),
+        'parent_item_colon' => ''
+    );
+ 
+    // Creamos un array para $args
+    $args = array( 'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'menu_position' => null,
+        'menu_icon' => 'dashicons-slides',
+        'supports' => array( 'title', 'editor', 'thumbnail' )
+    );
+ 
+    register_post_type( 'slider', $args ); /* Registramos y a funcionar */
+}
+/*Fin SLIDERS*/
+/*columnas slider wpadmin*/
+/*cargarlos*/
+ // adding our table columns with this function:  
+function slider_custom_table_head( $defaults ) {  
+    $defaults['orden']   = 'Orden';  
+    return $defaults;  
+}  
+// change the _event_ part in the filter name to your CPT slug  
+add_filter('manage_slider_posts_columns', 'slider_custom_table_head');  
+  
+  
+// now let's fill our new columns with post meta content  
+function slider_custom_table_content( $column_name, $post_id ) {  
+    if ($column_name == 'orden') { 
+        echo get_post_meta( $post_id, 'meta-box-slider-orden', true ); 
+    } 
+} 
+// change the _event_ part in the filter name to your CPT slug 
+add_action( 'manage_slider_posts_custom_column', 'slider_custom_table_content', 10, 2 );  
+
+/*ORDENARLOS FILTRO*/
+add_filter( 'manage_edit-slider_sortable_columns', 'my_slider_sortable_columns' );
+
+function my_slider_sortable_columns( $columns ) {
+
+    $columns['orden'] = 'orden';
+
+    return $columns;
+}
+
+/**/
+/*Meta BOXES*/
+/*Propiedades Sliders*/
+/*1*/
+
+function add_custom_meta_box_slider()
+{
+    add_meta_box("slider-meta-box", "Propiedades slider", "custom_meta_box_slider_markup", "slider", "side", "high", null);
+}
+
+add_action("add_meta_boxes", "add_custom_meta_box_slider");
+
+/*2*/
+function custom_meta_box_slider_markup($object)
+{
+    wp_nonce_field(basename(__FILE__), "meta-box-nonce");
+
+    ?>
+<div>    
+    <!--<label for="meta-box-slider-video">¿Vídeo?</label>
+    <input name="meta-box-slider-video" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-slider-video", true); ?>">
+    <br />-->
+    <label for="meta-box-slider-subtitu">Subititular</label>
+    <input name="meta-box-slider-subtitu" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-slider-subtitu", true); ?>">
+    <br />
+    <label for="meta-box-slider-texto-bt-01">Texto Botón 01</label>
+    <input name="meta-box-slider-texto-bt-01" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-slider-texto-bt-01", true); ?>">
+    <br />
+    <label for="meta-box-slider-url-bt-01">URL Botón 01</label>
+    <input name="meta-box-slider-url-bt-01" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-slider-url-bt-01", true); ?>">
+    <br />
+    <label for="meta-box-slider-texto-bt-02">Texto Botón 02</label>
+    <input name="meta-box-slider-texto-bt-02" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-slider-texto-bt-02", true); ?>">
+    <br />
+    <label for="meta-box-slider-url-bt-02">URL Botón 02</label>
+    <input name="meta-box-slider-url-bt-02" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-slider-url-bt-02", true); ?>">
+    <br />
+    <label for="meta_box_slider_fondo">Fondo</label>
+    <select name="meta_box_slider_fondo" id="meta_box_slider_fondo">
+        <?php $color_fondo = get_post_meta( get_the_ID(), 'meta_box_slider_fondo', true );?>
+            <option value="blanco" <?php if ($color_fondo == "blanco")  echo 'selected'; ?>>Blanco</option>                        
+			<option value="oscuro" <?php if ($color_fondo == "oscuro")  echo 'selected'; ?>>Oscuro</option>            
+        </select>
+    <br />
+    <label for="meta-box-slider-orden">Orden</label>
+    <input name="meta-box-slider-orden" type="text" value="<?php echo get_post_meta($object->ID, "meta-box-slider-orden", true); ?>">
+</div>
+<?php  
+}
+
+/*3*/
+function save_custom_meta_box_slider($post_id, $post, $update)
+{
+    if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
+        return $post_id;
+
+    if(!current_user_can("edit_post", $post_id))
+        return $post_id;
+
+    if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE)
+        return $post_id;
+
+    $slug = "slider";
+    if($slug != $post->post_type)
+        return $post_id;
+        $meta_box_slider_video = "";
+        $meta_box_slider_subtitu = "";
+        $meta_box_slider_texto_bt_01 = "";
+        $meta_box_slider_url_bt_01 = "";
+        $meta_box_slider_texto_bt_02 = "";
+        $meta_box_slider_url_bt_02 = ""; 
+        $selected = isset( $values['meta_box_slider_fondo'] ) ? esc_attr( $values['meta_box_slider_fondo'][0] ) : '';   
+        $meta_box_slider_orden_value = "";
+
+    if(isset($_POST["meta-box-slider-video"]))
+    {
+        $meta_box_slider_video = $_POST["meta-box-slider-video"];
+    }   
+    update_post_meta($post_id, "meta-box-slider-video", $meta_box_slider_video);
+
+    if(isset($_POST["meta-box-slider-subtitu"]))
+    {
+        $meta_box_slider_subtitu = $_POST["meta-box-slider-subtitu"];
+    }   
+    update_post_meta($post_id, "meta-box-slider-subtitu", $meta_box_slider_subtitu);
+
+    if(isset($_POST["meta-box-slider-texto-bt-01"]))
+    {
+        $meta_box_slider_texto_bt_01 = $_POST["meta-box-slider-texto-bt-01"];
+    }   
+    update_post_meta($post_id, "meta-box-slider-texto-bt-01", $meta_box_slider_texto_bt_01);
+
+    if(isset($_POST["meta-box-slider-url-bt-01"]))
+    {
+        $meta_box_slider_url_bt_01 = $_POST["meta-box-slider-url-bt-01"];
+    }   
+    update_post_meta($post_id, "meta-box-slider-url-bt-01", $meta_box_slider_url_bt_01);
+
+    if(isset($_POST["meta-box-slider-texto-bt-02"]))
+    {
+        $meta_box_slider_texto_bt_02 = $_POST["meta-box-slider-texto-bt-02"];
+    }   
+    update_post_meta($post_id, "meta-box-slider-texto-bt-02", $meta_box_slider_texto_bt_02);
+
+    if(isset($_POST["meta-box-slider-url-bt-02"]))
+    {
+        $meta_box_slider_url_bt_02 = $_POST["meta-box-slider-url-bt-02"];
+    }   
+    update_post_meta($post_id, "meta-box-slider-url-bt-02", $meta_box_slider_url_bt_02);
+    
+    if( isset( $_POST['meta_box_slider_fondo'] ) )
+        update_post_meta( $post_id, "meta_box_slider_fondo", esc_attr( $_POST['meta_box_slider_fondo'] ) );
+
+     if(isset($_POST["meta-box-slider-orden"]))
+    {
+        $meta_box_slider_orden_value = $_POST["meta-box-slider-orden"];
+    }   
+    update_post_meta($post_id, "meta-box-slider-orden", $meta_box_slider_orden_value);
+}
+
+add_action("save_post", "save_custom_meta_box_slider", 10, 3);
+
+/*Fin MetaBoxes Sliders*/
+
+
 
 /*  Puestos */
 // La función no será utilizada antes del 'init'.
@@ -1116,5 +1307,23 @@ function metabox_evento_fecha_save( $post_id ) {
 
 /*Fin MetaBoxes eventos*/
 
+
+
+/**WOOCOMERCE
+ * Cambiar el número de columnas en pag tienda
+
+ */
+
+ add_filter('loop_shop_columns', 'loop_columns', 999);
+
+ if (!function_exists('loop_columns')) {
+ 
+  function loop_columns() {
+ 
+  return 3; // 3 productos por columna
+ 
+  }
+ 
+ }
 
 
