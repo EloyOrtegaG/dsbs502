@@ -52,12 +52,16 @@ get_header();
                 <h1 class="entry-title"
                 <?php
                 
-                $ColorCarniceria = 'var(--Color-Carniceria)';      
-                $ColorEcopuestos = 'var(--Color-Ecopuestos)';      
+                
+        
                 $ColorFruteria = 'var(--Color-Fruteria)';      
-                $ColorGastrobares = 'var(--Color-Gastrobares)';      
+                $ColorCarniceria = 'var(--Color-Carniceria)';      
                 $ColorPescaderia = 'var(--Color-Pescaderia)';      
-                $ColorPolleria = 'var(--Color-Polleria)';                                                     
+                $ColorEcopuestos = 'var(--Color-Ecopuestos)';      
+                $ColorGastrobares = 'var(--Color-Gastrobares)';      
+        
+                
+                $ColorPolleria = 'var(--Color-Polleria-Quesos)';                                                     
                 $ColorOtros = 'var(--Color-Otros)';      
 
 
@@ -74,7 +78,9 @@ get_header();
                         echo 'style="border-left: 8px solid ' . $ColorEcopuestos . '; padding-left: 1rem;">';
                     elseif (has_term('gastrobares', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorGastrobares . '; padding-left: 1rem;">';
-                    elseif (has_term('otros', 'gremios-puesto')) :
+                    elseif (has_term('pollerias-y-quesos', 'gremios-puesto')) :
+                        echo 'style="border-left: 8px solid ' . $ColorPolleria . '; padding-left: 1rem;">';
+                        elseif (has_term('otros', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorOtros . '; padding-left: 1rem;">';
                 endif;
 
