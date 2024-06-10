@@ -1244,7 +1244,7 @@ function add_evento_meta_box() {
 		'product',                         // The selected post type
 		"normal",
 		"high", 
-		null
+		null,
 	);
 }
 
@@ -1327,4 +1327,4 @@ function metabox_evento_fecha_save( $post_id ) {
  }
 
 
- remove_action( 'woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_button_view_cart', 10 );
+ 

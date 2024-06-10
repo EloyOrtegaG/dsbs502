@@ -107,7 +107,7 @@ get_header();
                 else;*/
 
                     if( has_term( 'planta-baja', 'plantas-puesto' ) ) : ?>
-                        <i class="bi bi-arrow-left"></i><a href="http://localhost:10004/planta-baja/">Volver al plano</a>
+                        <i class="bi bi-arrow-left"></i><a href="https://mercadoabastos.eus/planta-baja/"><?php echo pll__('Volver al plano');?></a>
                     <?php endif; 
                     get_query_var('taxonomy');
                     ?>

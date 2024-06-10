@@ -19,14 +19,6 @@ $text-white: #f2f2f2;
 
 /**
 
-
-
-
-
-
-
-
-
 // Options
 $enable-dark-mode: true;
 $enable-rounded: true;
@@ -215,7 +207,7 @@ body {
 
 	h1 {
 		font-size: 3.5rem;
-		font-weight: 300;
+		font-weight: 600;
 		letter-spacing: -.045em;
 		line-height: 3.75rem;
 		margin-top: 2rem;
@@ -321,7 +313,7 @@ main {
 
 #footer {
 	//background-color: #fff;
-	background: #333 url("http://localhost:10004/wp-content/uploads/2024/05/bg-footer.jpg") center center;
+	background: #333 url("http://mercadoabastos.eus/wp-content/uploads/2024/05/bg-footer.jpg") center center;
 	background-size: cover;
 	color: $text-white;
 
@@ -730,7 +722,7 @@ header {
 		}
 	}
 
-	padding: 0 !important;
+	padding: 4em 0 !important;
 
 	h1.has-large-font-size {
 		font-size: 3.5rem !important;
@@ -1575,6 +1567,9 @@ nav.menu-puestos {
 	width: unset !important;
 
 }
+.woocommerce-breadcrumb {
+	display: none;
+}
 
 .eventos-home ul.products {
 	list-style: none;
@@ -1605,6 +1600,10 @@ nav.menu-puestos {
 			}
 		}
 	}
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-category__title, .woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce ul.products li.product h3 {
+	font-size: 1.5em;
 }
 svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
 	fill: white !important;
@@ -1729,6 +1728,11 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
 	color: rgb(248, 249, 250) !important;
 }
 
+
+/*.woocommerce ul.products.columns-1 li.product, .woocommerce-page ul.products.columns-1 li.product {
+	display: flex;
+}*/
+
 .woocommerce ul.products li.product a,
 .woocommerce-LoopProduct-link.woocommerce-loop-product__link {
 	position: relative;
@@ -1742,7 +1746,7 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
 		left: 0;
 		background: rgba($primary, .8);
 		color: white;
-		//font-weight: 700;
+		font-weight: 700;
 		text-align: center;
 		padding: .5em;
 
@@ -1790,8 +1794,8 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
   
 	  h1 {
 		max-width: none;
-		letter-spacing: -0.05em;
-		font-weight: normal;
+		//letter-spacing: -0.05em;
+		//font-weight: normal;
 		font-size: calc(3.325rem + 1vw);
 		@media (max-width:1367px) {
 			font-size: calc(2.325rem + 1vw);

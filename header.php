@@ -82,7 +82,7 @@ $search_enabled = get_theme_mod('search_enabled', '1'); // Get custom meta-value
 					<div class="menu-idiomas d-none d-lg-flex align-items-center"><?php dynamic_sidebar('header_widget_01'); ?></div>
 					<a class="d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasMainMenu" role="button"
 					aria-controls="offcanvasMainMenu">
-					<i class="bi bi-list"></i></a>
+					<i class="bi bi-list text-white"></i></a>
 				</div><!-- /.container -->
 				<!--<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasMainMenu" role="button"
 					aria-controls="offcanvasMainMenu">
