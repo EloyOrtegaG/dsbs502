@@ -619,20 +619,20 @@ header {
 			>a {
 				font-size: 1.125rem;
 				font-weight: 500;
-				color: $gray-600;
+				color: $gray-400;
 				border-top: 3px solid transparent;
 
 				&:hover:not(.active) {
 					//opacity: .6;
 					//color: $primary;
-					color: $gray-600;
+					//color: $gray-600;
 					border-color: $gray-500;
 				}
 
 				&.active,
 				&:has(+ ul li a.dropdown-item.active) {
-					color: black !important;
-					border-color: black;
+					color: white !important;
+					border-color: white;
 					opacity: 1 !important;
 					background: transparent;
 				}
@@ -643,7 +643,7 @@ header {
 			}
 
 			li a.dropdown-item {
-				color: $gray-700;
+				color: $gray-300;
 				font-size: .95em;
 				font-weight: 400;
 				padding-top: .5rem !important;
@@ -651,14 +651,14 @@ header {
 
 				&:hover {
 					border-color: transparent;
-					background-color: $gray-200;
-					color: $gray-900;
+					background-color: $gray-800;
+					color: $gray-100;
 				}
 
 				&.active {
 					border-color: transparent;
-					background-color: $gray-200;
-					color: black;
+					background-color: $gray-800;
+					color: white;
 				}
 			}
 		}
@@ -674,20 +674,21 @@ header {
 		li {
 			a {
 				padding: .5rem .35rem;
-				color: $secondary;
+				color: $light;
 				font-weight: 600;
-
+				opacity: .6;
 				&:hover {
-					opacity: .6;
+					opacity: .9;
 				}
 			}
 
 			&.current-lang a {
-				color: $primary !important;
+				color: white !important;
+				opacity: 1;
 
-				&:hover {
+			/*	&:hover {
 					opacity: 1;
-				}
+				}*/
 			}
 		}
 	}
@@ -1605,8 +1606,16 @@ nav.menu-puestos {
 		}
 	}
 }
-
-
+svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
+	fill: white !important;
+}
+.wc-block-mini-cart__badge {
+	background-color: white !important;
+	color: $primary !important;
+}
+.woocommerce.widget_shopping_cart .woocommerce-mini-cart__buttons a {
+    width: 100%;
+}
 
 
 //EVENT TICKETS MANAGER FOR WOOCOMMERCE
@@ -1804,12 +1813,12 @@ nav.menu-puestos {
   
 	  p {
 		color: #fff;
-		font-size: 1.16rem;
+		font-size: 1.3rem;
 		@media (max-width:1367px) {
 			font-size: 1.25rem;
 			
 		}
-		line-height: 1.3;
+		line-height: 1.4;
 		font-weight: 300
 	  }
   
@@ -1896,7 +1905,7 @@ nav.menu-puestos {
 
 
 #homeCarousel .carousel-item .carousel-caption {
-  z-index: 9;
+  z-index: 1;
   bottom: 30%;
   h1, p { 
 	  text-align: left;
