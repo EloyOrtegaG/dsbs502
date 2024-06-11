@@ -1363,7 +1363,10 @@ function metabox_evento_fecha_save( $post_id ) {
  
 	 
 	 } 
-
+/**
+ * Remove related products output
+ */
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 	 
 /*Modificar listado products*/
 
