@@ -24,7 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
+<li <?php wc_product_class( 'item-evento', $product ); ?>>
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -47,21 +47,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
 	
-	global $product;
-	$my_var = $product->get_id();
-
-	$evento_fecha = get_post_meta( $my_var, '_evento_fecha_meta_key', true );
-		// create a new date format
-		$mes = date_i18n('F', strtotime($evento_fecha));
-		$dia = date_i18n('d', strtotime($evento_fecha));
-		$anio = date_i18n('Y', strtotime($evento_fecha));
-		echo '<div class="fecha-sobre-foto">' ;
-		echo '<div class="mes"> ' .  $mes . ' </div>';
-		echo '<div class="dia"> ' .  $dia  .' </div>';
-		echo '<div class="anio"> ' .  $anio  .' </div>';
-		echo '</div>';
-
-		
 
 
 	do_action( 'woocommerce_shop_loop_item_title' );

@@ -171,7 +171,7 @@ $query_slider = new WP_Query($values_slider);
             <?php
             $args = array(
                 'post_type' => 'product',
-                'posts_per_page' => 3
+                'posts_per_page' => 2,
             );
             $loop = new WP_Query($args);
             if ($loop->have_posts()) {

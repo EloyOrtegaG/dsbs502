@@ -1616,6 +1616,23 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
     width: 100%;
 }
 
+/*listado eventos*/
+ul.products li.item-evento {
+	display: flex;
+	flex-wrap: wrap;
+	> *:first-child {
+		flex-basis: 16%;
+		max-width: 16%;
+	}
+	.foto-tit-info {
+		display: flex;
+		flex-basis: 84%;
+		max-width: 84%;
+		.button {display: none;}
+	}
+}
+
+
 
 //EVENT TICKETS MANAGER FOR WOOCOMMERCE
 
@@ -1769,6 +1786,27 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
 			letter-spacing: -0.02em;
 		}
 	}
+	.fecha-item-evento {
+		text-align: center;
+		.dia {
+			font-size: 3rem;
+			font-weight: 700;
+			color: $primary;
+		}		
+		}
+		.mes {
+			text-transform: capitalize;
+			font-size: 1rem;
+			letter-spacing: -0.02em;
+			/*max-width: 40px;
+			overflow: hidden;
+			text-overflow: ellipsis;			
+			white-space: nowrap;*/
+		}
+		.anio {
+			font-size: 1.5rem;
+			letter-spacing: -0.03em;
+	}
 }
 
 
@@ -1873,7 +1911,11 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
 
 
   #homeCarousel .carousel-item {
-	min-height: 85vh;
+	//min-height: 85vh;
+	min-height: calc(100vh - 5.84rem);
+	h1 {
+		margin-top: 0 !important;
+	}
 	@media (max-width: 991px) {
 		h1 {
 			font-size: 3.5em;
@@ -1910,7 +1952,7 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
 
 #homeCarousel .carousel-item .carousel-caption {
   z-index: 1;
-  bottom: 30%;
+  bottom: 33%;
   h1, p { 
 	  text-align: left;
   }
@@ -1930,7 +1972,7 @@ svg.wc-block-mini-cart__icon circle,svg.wc-block-mini-cart__icon path {
 .cont-slider {
 //margin: 0 auto;
 //background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.65) 50%, rgba(255, 255, 255, 0) 90%);
-padding-top: 1.75rem;
+padding-top: 0;
 //padding-bottom: 2rem;
 max-width: 42em;
 

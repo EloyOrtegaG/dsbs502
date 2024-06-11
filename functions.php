@@ -1320,11 +1320,79 @@ function metabox_evento_fecha_save( $post_id ) {
  
   function loop_columns() {
  
-  return 3; // 3 productos por columna
+  return 2; // 1 productos por columna
  
   }
  
  }
 
-
+/*modificar single product*/
+ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40); //eo eliminar gancho meta
+	
+ add_action( 'woocommerce_single_product_summary', 'datos_evento' );
+ function datos_evento() {	
+	 //$my_var = $product['get_id'];
+	 //$product->get_id()
+	 //$evento_fecha = get_post_meta( $post->ID, '_evento_fecha_meta_key', true );
  
+	 global $product;
+	 $my_var = $product->get_id();
+ 
+	 $evento_fecha = get_post_meta( $my_var, '_evento_fecha_meta_key', true );
+		 // create a new date format
+		 $new_format = date_i18n('d F Y', strtotime($evento_fecha));
+	 
+	 $evento_hora = get_post_meta( $my_var, '_evento_hora_meta_key', true );			
+	 $evento_lugar = get_post_meta( $my_var, '_evento_lugar_meta_key', true );
+ 
+	 if (!empty($evento_fecha) || !empty($evento_hora) || !empty($evento_lugar)) {
+		 echo '<ul class="datos-evento">';}
+	 if (!empty($evento_fecha)) {
+		 echo '<li><i class="bi bi-calendar-event me-1"></i> ' . $new_format . '</li>';
+		 }
+		 if (!empty($evento_hora)) {
+			 echo '<li><i class="bi bi-clock me-1"></i> ' . $evento_hora . '</li>';
+		 }
+		 if (!empty($evento_lugar)) {
+			 echo '<li><i class="bi bi-geo-alt me-2"></i>' . $evento_lugar . '</li>';
+		 }
+		 if (!empty($evento_fecha) || !empty($evento_hora) || !empty($evento_lugar)) {
+			 echo '</ul>';
+		 }
+ 
+ 
+	 
+	 } 
+
+	 
+/*Modificar listado products*/
+
+
+remove_action('woocommerce_template_loop_product_thumbnail', 'woocommerce_template_loop_product_title', 10); 
+	
+add_action( 'woocommerce_before_shop_loop_item', 'anadir_fecha_abrir_div' );
+function anadir_fecha_abrir_div() {	
+	 global $product;
+	 $my_var = $product->get_id();
+ 
+	 $evento_fecha = get_post_meta( $my_var, '_evento_fecha_meta_key', true );
+		 // create a new date format
+		 $dia = date_i18n('d', strtotime($evento_fecha));
+		 $mes = date_i18n('F', strtotime($evento_fecha));		 
+		 $anio = date_i18n('Y', strtotime($evento_fecha));
+		 
+		 echo '<div class="fecha-item-evento">' ;
+		 echo '<div class="mes"> ' .  $mes . ' </div>';		 
+		 echo '<div class="dia"> ' .  $dia  .' </div>';
+		 
+		 echo '<div class="anio"> ' .  $anio  .' </div>';
+		 echo '</div>';
+		 echo '<div class="foto-tit-info">';
+ 
+		 
+}
+
+add_action( 'woocommerce_after_shop_loop_item', 'cerrar_div' );
+function cerrar_div() {
+	echo '</div>';
+	}
