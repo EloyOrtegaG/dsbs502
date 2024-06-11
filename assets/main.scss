@@ -13,8 +13,9 @@
 
 // 2. Include any default variable overrides here
 $primary: #1A1918;
-$secondary: #5e6975;
+$secondary: #525D68;
 $text-white: #f2f2f2;
+$tertiary: #e1e1e1;
 
 
 /**
@@ -84,7 +85,7 @@ $container-max-widths: (sm: 540px,
 	md: 758px,
 	lg: 990px,
 	xl: 1140px,
-	xxl: 1320px,
+	xxl: 1440px,
 	xxxl: 1520px);
 
 // Fonts
@@ -225,6 +226,10 @@ body {
 		letter-spacing: -0.02em;
 	}
 
+	p:not(footer p):not(.bg-primary p)::not(.bg-dark p):not(.texto-sobre-foto p):not(.info-prac p) { color: $secondary;}
+	footer p:not(strong), .bg-primary p:not(strong), .texto-sobre-foto:not(strong), .info-prac p:not(strong) { color: $tertiary;}
+	footer strong, .bg-primary strong, .texto-sobre-foto strong, .info-prac strong { color: white;}
+
 	/* If WP-Adminbar is visible */
 	&.admin-bar {
 		#header.fixed-top {
@@ -313,7 +318,7 @@ main {
 
 #footer {
 	//background-color: #fff;
-	background: #333 url("http://mercadoabastos.eus/wp-content/uploads/2024/05/bg-footer.jpg") center center;
+	background: #333 url("https://mercadoabastos.eus/wp-content/uploads/2024/06/bg-footer-02.jpg") center center;
 	background-size: cover;
 	color: $text-white;
 
@@ -323,13 +328,18 @@ main {
 	}
 
 	a {
-		color: white;
+		color: $gray-500;
 	}
 
 	.menu-item {
 		a {
+			color: $gray-500;
+			&:hover {
+				color: $gray-200;
+			}
+		
 			&[aria-current='page'] {
-				color: $link-hover-color;
+				color: white;
 			}
 		}
 	}
@@ -656,7 +666,10 @@ header {
 		}
 	}
 
-	.menu-idiomas nav ul {
+	.menu-idiomas {
+
+		nav ul {
+			display: none !important; /*Provisional OJO!!*/
 		list-style: none;
 		display: flex;
 		align-items: end;
@@ -685,7 +698,7 @@ header {
 		}
 	}
 }
-
+}
 .headroom {
 	position: fixed;
 	top: 0;
@@ -1116,7 +1129,7 @@ header {
 	.card {
 		//height: 100%;
 		height: 436px;
-		margin-bottom: 1.5rem;
+		//margin-bottom: 1.5rem;
 		border: 0;
 
 		a {
@@ -1811,17 +1824,18 @@ ul.products li.item-evento {
 
 
 #homeCarousel {
+	
 	margin-top: 0;
 	margin-bottom: 0;
 	background-color: #262626;
+	
 	.overlay-carousel {
 		position: absolute;
 		width: 100%; height: 100%;
-		background: linear-gradient(270deg, rgba(0, 0, 0, 0.05) 25%, rgba(0, 0, 0, 0.8) 75%);
+		background: linear-gradient(270deg, rgba(0, 0, 0, 0.05) 25%, rgba(0, 0, 0, 0.7) 75%);
 		@media(max-width: 991px) {
 			background: rgba(0, 0, 0, 0.5) !important;
-		}
-		
+		}		
 	}
   
 	.carousel-indicators li:not(.active) {
@@ -1836,8 +1850,7 @@ ul.products li.item-evento {
 		//font-weight: normal;
 		font-size: calc(3.325rem + 1vw);
 		@media (max-width:1367px) {
-			font-size: calc(2.325rem + 1vw);
-			
+			font-size: calc(2.325rem + 1vw);			
 		}
 		line-height: 1;
 		color: white;
@@ -1898,7 +1911,7 @@ ul.products li.item-evento {
 	.btn {
 	  border-width: 2px;
 	  padding: .45rem 1.75rem;
-	  border-radius: 2rem;
+	  //border-radius: 2rem;
 	  text-transform: uppercase;
 	  
 	  font-weight: bold;
@@ -1985,4 +1998,13 @@ max-width: 42em;
 .cont-slider p:first-child {
   display: none;
 }
+}
+
+
+/*Fin carousel*/
+.wpcf7-submit {
+	padding: .5em 1.5em;
+	letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
 }

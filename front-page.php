@@ -187,6 +187,6 @@ $query_slider = new WP_Query($values_slider);
         </ul>
     </section>
 </div>
-<div style="height:144px" aria-hidden="true" class="wp-block-spacer"></div>
+<div style="height:48px" aria-hidden="true" class="wp-block-spacer"></div>
 
 <?php get_footer(); ?>
