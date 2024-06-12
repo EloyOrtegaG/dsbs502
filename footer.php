@@ -17,16 +17,16 @@
 
 			</div>
 			<div class="col-md-4">
-				<h3>Newsletter</h3>
+				<!-- <h3>Newsletter</h3>
 				<form action="">
 					<p class="text-tertiary" style="max-width: 16rem;">
 						<?php echo pll__('Sigue al día nuestra actualidad, eventos y todas las novedades.') ?>
 					</p>
-					<div class="d-flex">
+					<div class="d-md-flex">
 						<input type="text" value="email" class="bg-dark text-white border-1 me-2 p-2">
-						<input type="submit" class="bg-white text-primary btn btn-lg" value="<?php echo pll__('Suscríbete');?>">
+						<input type="submit" class="bg-white text-primary btn btn-md mt-md-2" value="<?php echo pll__('Suscríbete');?>">
 					</div>
-				</form>
+				</form> -->
 			</div>
 			<div class="col-md-4">
 
@@ -44,7 +44,7 @@
 							//'fallback_cb'     => 'WP_Bootstrap4_Navwalker_Footer::fallback',
 							'walker' => new WP_Bootstrap4_Navwalker_Footer(),
 							'theme_location' => 'footer-menu',
-							'items_wrap' => '<ul class="menu nav flex-column text-end">%3$s</ul>',
+							'items_wrap' => '<ul class="menu nav flex-column text-md-end">%3$s</ul>',
 						)
 					);
 				endif;
@@ -67,7 +67,7 @@
 
 		</div><!-- /.row -->
 		<div class="row mt-5">
-			<p class="text-end">
+			<p class="text-md-end">
 				<?php printf(esc_html__('&copy; %1$s %2$s.', 'dsbs502'), wp_date('Y'), get_bloginfo('name', 'display')); ?>
 			</p>
 		</div>

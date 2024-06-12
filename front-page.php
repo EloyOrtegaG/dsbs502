@@ -165,7 +165,7 @@ $query_slider = new WP_Query($values_slider);
 
     </div>
     <div style="height:144px" aria-hidden="true" class="wp-block-spacer"></div>
-    <section class="eventos-home">
+    <!-- <section class="eventos-home">
         <h2 class="text-center mb-5"><?php echo pll__('Eventos'); ?></h2>
         <ul class="products">
             <?php
@@ -185,7 +185,7 @@ $query_slider = new WP_Query($values_slider);
             wp_reset_postdata();
             ?>
         </ul>
-    </section>
+    </section> -->
 </div>
 <div style="height:48px" aria-hidden="true" class="wp-block-spacer"></div>
 

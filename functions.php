@@ -1320,7 +1320,7 @@ function metabox_evento_fecha_save( $post_id ) {
  
   function loop_columns() {
  
-  return 2; // 1 productos por columna
+  return 1; // 1 productos por columna
  
   }
  
@@ -1379,16 +1379,18 @@ function anadir_fecha_abrir_div() {
 	 $my_var = $product->get_id();
  
 	 $evento_fecha = get_post_meta( $my_var, '_evento_fecha_meta_key', true );
+	 $evento_hora = get_post_meta( $my_var, '_evento_hora_meta_key', true );			
 		 // create a new date format
 		 $dia = date_i18n('d', strtotime($evento_fecha));
 		 $mes = date_i18n('F', strtotime($evento_fecha));		 
-		 $anio = date_i18n('Y', strtotime($evento_fecha));
+		 //$anio = date_i18n('Y', strtotime($evento_fecha));
+		 
 		 
 		 echo '<div class="fecha-item-evento">' ;
 		 echo '<div class="mes"> ' .  $mes . ' </div>';		 
 		 echo '<div class="dia"> ' .  $dia  .' </div>';
-		 
-		 echo '<div class="anio"> ' .  $anio  .' </div>';
+		 echo '<div class="anio"> ' .  $evento_hora  .' </div>';
+		 //echo '<div class="anio"> ' .  $anio  .' </div>';
 		 echo '</div>';
 		 echo '<div class="foto-tit-info">';
  

@@ -4,7 +4,7 @@ get_header();
 
 //the_post();
 ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-lg-2 pt-5">
             <h3>
