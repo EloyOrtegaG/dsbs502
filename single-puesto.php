@@ -114,6 +114,9 @@ get_header();
 
                     if( has_term( 'planta-baja', 'plantas-puesto' ) ) : ?>
                         <i class="bi bi-arrow-left"></i><a href="https://mercadoabastos.eus/planta-baja/"><?php echo pll__('Volver al plano');?></a>
+
+                        <?php else : ?>
+                            <i class="bi bi-arrow-left"></i><a href="https://mercadoabastos.eus/planta-superior/"><?php echo pll__('Volver al plano');?></a>
                     <?php endif; 
                     get_query_var('taxonomy');
                     ?>
