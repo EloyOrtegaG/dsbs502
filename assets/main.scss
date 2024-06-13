@@ -16,6 +16,7 @@ $primary: #1A1918;
 $secondary: #525D68;
 $text-white: #f2f2f2;
 $tertiary: #e1e1e1;
+$dark: $primary;
 
 
 /**
@@ -172,6 +173,8 @@ $link-decoration: none;
 	--Color-Carniceria: #e70033;
 
 	--Color-Ecopuestos: #66bc29;
+
+	--Color-FundacionAbastos: #EF7F01;
 
 	--Color-Fruteria: #66bc29;
 
@@ -451,13 +454,17 @@ ul.datos-puesto,
 ul.datos-evento {
 	list-style: none;
 	margin: 0;
-	padding: 1em;
+	//padding: 1em;
+	padding: 0;
 
 	//border-bottom: 1px solid $primary;
 	li {
-		border-bottom: 1px solid $primary;
+		/*border-bottom: 1px solid $primary;
 		padding-top: .5rem;
-		padding-bottom: .5rem;
+		padding-bottom: .5rem;*/
+		background-color: $gray-200;
+		padding: .5em 1em;
+		margin-bottom: 2px;
 	}
 }
 
@@ -1303,7 +1310,7 @@ nav.menu-puestos {
 			border-bottom: 1px solid;
 
 			>a {
-				font-size: 1.125rem;
+				font-size: 1.05rem;
 				letter-spacing: -0.015em;
 				padding: .5rem 0;
 				line-height: 1.2;
@@ -1349,7 +1356,7 @@ nav.menu-puestos {
 
 	.overlay-cabpuesto {
 		position: absolute;
-		z-index: 1;
+		z-index: 0;
 		background: rgb(0, 0, 0);
 		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .8) 100%);
 		width: 100%;
@@ -1371,7 +1378,7 @@ nav.menu-puestos {
 		position: absolute;
 		left: 2rem;
 		bottom: 2rem;
-		z-index: 2;
+		z-index: 1;
 		color: white;
 		font-size: 3.5rem;
 	}
@@ -1380,12 +1387,12 @@ nav.menu-puestos {
 .sidebar-puesto {
 	z-index: 5;
 
-	@media (min-width: breakpoint-max(xl)) {
+	/*@media (min-width: breakpoint-max(xl)) {
 		margin-top: -5rem;
 	}
 
 	background-color: $primary;
-	color: white;
+	color: white;*/
 }
 
 
@@ -1491,6 +1498,10 @@ nav.menu-puestos {
 
 .colorEcopuestos {
 	color: #66bc29
+}
+
+.colorFundacionAbastos {
+	color: #EF7F01
 }
 
 .colorFruteria {
@@ -1929,7 +1940,7 @@ ul.products li.item-evento {
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+		background: linear-gradient(270deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 0.8) 100%);
 
 		@media(max-width: 991px) {
 			background: rgba(0, 0, 0, 0.5) !important;
@@ -1946,7 +1957,7 @@ ul.products li.item-evento {
 			max-width: none;
 			//letter-spacing: -0.05em;
 			//font-weight: normal;
-			font-size: calc(3.325rem + 1vw);
+			font-size: calc(3.825rem + 1vw);
 
 			@media (max-width:1367px) {
 				font-size: calc(2.325rem + 1vw);

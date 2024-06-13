@@ -560,7 +560,8 @@ if ( function_exists( 'register_nav_menus' ) ) {
 			'main-menu'   => 'Main Navigation Menu',
 			'footer-menu' => 'Footer Menu',
 			'mercado-menu' => 'Mercado Menu',
-			'puestos-menu' => 'Puestos Menu',
+			'planta-baja-menu' => 'Planta Baja Menu',
+			'planta-sup-menu' => 'Planta Sup Menu',
 		)
 	);
 }

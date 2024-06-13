@@ -4,7 +4,7 @@ get_header();
 
 //the_post();
 ?>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-lg-2 pt-5">
             <h3>
@@ -13,7 +13,7 @@ get_header();
                 </a>
             </h3>
             <?php
-            if (has_nav_menu('puestos-menu')): // See function register_nav_menus() in functions.php
+            if (has_nav_menu('planta-baja-menu')): // See function register_nav_menus() in functions.php
                 /*
                                          Loading WordPress Custom Menu (theme_location) ... remove <div> <ul> containers and show only <li> items!!!
                                          Menu name taken from functions.php!!! ... register_nav_menu( 'puesto-menu', 'Puesto Menu' );
@@ -26,7 +26,35 @@ get_header();
                         'container_class' => 'menu-puestos',
                         //'fallback_cb'     => 'WP_Bootstrap4_Navwalker_Puesto::fallback',
                         'walker' => new WP_Bootstrap_Navwalker_Puestos(),
-                        'theme_location' => 'puestos-menu',
+                        'theme_location' => 'planta-baja-menu',
+                        'items_wrap' => '<ul class="menu nav flex-column">%3$s</ul>',
+                    )
+                );
+            endif;
+
+
+            ?>
+
+<h3 class="mt-5">
+                <a href="<?php echo get_site_url(); ?>/planta-superior">
+                    <?php echo pll__('Planta superior'); ?>
+                </a>
+            </h3>
+            <?php
+            if (has_nav_menu('planta-sup-menu')): // See function register_nav_menus() in functions.php
+                /*
+                                         Loading WordPress Custom Menu (theme_location) ... remove <div> <ul> containers and show only <li> items!!!
+                                         Menu name taken from functions.php!!! ... register_nav_menu( 'puesto-menu', 'Puesto Menu' );
+                                         !!! IMPORTANT: After adding all pages to the menu, don't forget to assign this menu to the Puesto menu of "Theme locations" /wp-admin/nav-menus.php (on left side) ... Otherwise the themes will not know, which menu to use!!!
+                                     */
+                wp_nav_menu(
+                    array(
+                        'container' => 'nav',
+                        //'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+                        'container_class' => 'menu-puestos',
+                        //'fallback_cb'     => 'WP_Bootstrap4_Navwalker_Puesto::fallback',
+                        'walker' => new WP_Bootstrap_Navwalker_Puestos(),
+                        'theme_location' => 'planta-sup-menu',
                         'items_wrap' => '<ul class="menu nav flex-column">%3$s</ul>',
                     )
                 );
@@ -58,6 +86,7 @@ get_header();
                 $ColorCarniceria = 'var(--Color-Carniceria)';      
                 $ColorPescaderia = 'var(--Color-Pescaderia)';      
                 $ColorEcopuestos = 'var(--Color-Ecopuestos)';      
+                $ColorFundacionAbastos = 'var(--Color-FundacionAbastos)';      
                 $ColorGastrobares = 'var(--Color-Gastrobares)';      
         
                 
@@ -76,6 +105,8 @@ get_header();
                         echo 'style="border-left: 8px solid ' . $ColorPescaderia . '; padding-left: 1rem;">';
                     elseif (has_term('ecopuestos', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorEcopuestos . '; padding-left: 1rem;">';
+                        elseif (has_term('fundacion-abastos', 'gremios-puesto')) :
+                            echo 'style="border-left: 8px solid ' . $ColorFundacionAbastos . '; padding-left: 1rem;">';
                     elseif (has_term('gastrobares', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorGastrobares . '; padding-left: 1rem;">';
                     elseif (has_term('pollerias-y-quesos', 'gremios-puesto')) :
@@ -86,7 +117,7 @@ get_header();
 
                ?>
                 
-                <?php the_title(); ?>
+            <?php the_title(); ?>
             </h1>
 
                 <?php
@@ -101,7 +132,7 @@ get_header();
                 <div class="overlay-cabpuesto"></div>
             </header><!-- /.entry-header -->
 
-            <div class="row">
+            <div class="row g-0">
                 <div class="col-lg-8 pe-lg-3"><?php the_content(); ?>
                 <div class="mt-5 d-flex">
                 <?php
@@ -128,7 +159,7 @@ get_header();
                 
                 </div>
             </div>
-                <div id="sidebar" class="sidebar-puesto col-lg-4 pt-2 px-3">
+                <div id="sidebar" class="sidebar-puesto col-lg-4 p-0">
 
                     <ul class="datos-puesto">
 

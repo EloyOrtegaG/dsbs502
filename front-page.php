@@ -69,8 +69,8 @@ $query_slider = new WP_Query($values_slider);
                                 $url_enlace_slider01 = get_post_meta($post->ID, 'meta-box-slider-url-bt-01', true);
                                 $url_enlace_slider02 = get_post_meta($post->ID, 'meta-box-slider-url-bt-02', true);
                                 if (!empty($url_enlace_slider01)): ?>
-                                    <a class="btn btn-lg mb-2 mb-sm-0 btn-light smoothScroll"
-                                        href="<?php echo get_post_meta(get_the_ID(), 'meta-box-slider-url-bt-01', true); ?>"><?php echo get_post_meta(get_the_ID(), 'meta-box-slider-texto-bt-01', true); ?></a>
+                                    <a class="btn btn-lg mb-2 mb-sm-0 btn-primary smoothScroll"
+                                        href="<?php echo get_post_meta(get_the_ID(), 'meta-box-slider-url-bt-01', true); ?>"><i class="bi bi-arrow-right me-2"></i><?php echo get_post_meta(get_the_ID(), 'meta-box-slider-texto-bt-01', true); ?></a>
                                 <?php endif;
                                 if (!empty($url_enlace_slider02)): ?>
                                     <a class="btn btn-lg mb-0 mb-sm-0 btn-white-outline text-white smoothScroll"

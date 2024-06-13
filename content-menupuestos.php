@@ -1,23 +1,4 @@
-<?php
-/**
- * Template Name: Page con Menu Puestos
- *
- */
-
-get_header();
-
-the_post();
-?>
-<?php
-
-get_header();
-
-//the_post();
-?>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-2 pt-5">
-        <h3>
+ <h3>
                 <a href="<?php echo get_site_url(); ?>/planta-baja">
                     <?php echo pll__('Planta baja'); ?>
                 </a>
@@ -72,17 +53,3 @@ get_header();
 
 
             ?>
-        </div>
-        <div class="col-lg-10 px-lg-5">
-
-
-            <?php the_content(); ?>
-
-        </div>
-    </div>
-
-
-<div style="height:80px;" aria-hidden="true" class="wp-block-spacer"></div>
-</div>
-
-<?php get_footer(); ?>
