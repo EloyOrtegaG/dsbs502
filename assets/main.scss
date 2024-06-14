@@ -12,11 +12,12 @@
 
 
 // 2. Include any default variable overrides here
-$primary: #1A1918;
+//$primary: #1A1918;
+$primary: #212529;
 $secondary: #525D68;
 $text-white: #f2f2f2;
 $tertiary: #e1e1e1;
-$dark: $primary;
+//$dark: $primary;
 
 
 /**
@@ -305,8 +306,12 @@ img {
 }
 
 /* Header */
-
+ #header.headroom--top { background-image: linear-gradient(rgba($primary, 1), rgba($primary, 1));}
+body.home #header.home.headroom--top { background-image: linear-gradient(rgba($primary, 1), rgba($primary, 0));}
 #header {
+	&:not(.home) {background: $primary;	}
+	
+	&.headroom--not-top.headroom--pinned { background: rgba($primary,.8);}
 	.search-form {
 		min-width: 250px;
 	}
@@ -317,13 +322,18 @@ img {
 	}
 
 	padding-top: 0;
-}
-
-/*.navbar-brand {
-	img {
-		height: 40px;
+	
+		a.navbar-brand img {
+			width: 147px;
+			height: auto;
+			@media (max-width: breakpoint-max(md)) {
+				width: 120px;
+			}
+		}
 	}
-}*/
+
+
+
 
 .navbar-static-top {
 	margin-bottom: $grid-gutter-width;
@@ -338,11 +348,15 @@ main {
 	padding-top: 92px;
 }
 
+body.home main {
+	padding-top: 0;
+}
+
 /* Footer */
 
 #footer {
 	//background-color: #fff;
-	background: #333 url("https://mercadoabastos.eus/wp-content/uploads/2024/06/bg-footer-02.jpg") center center;
+	background: #333 url("https://mercadoabastos.eus/wp-content/uploads/2024/06/bg-footer-03.jpg") center center;
 	background-size: cover;
 	color: $text-white;
 
@@ -647,6 +661,7 @@ z-index: 10;*/
 header {
 	.navbar-nav {
 		li {
+			
 			>a {
 				font-size: 1.125rem;
 				font-weight: 500;
@@ -656,8 +671,13 @@ header {
 				&:hover:not(.active) {
 					//opacity: .6;
 					//color: $primary;
-					//color: $gray-600;
+					color: $gray-200;
 					border-color: $gray-500;
+				}
+
+				&.nav-link.active, &.nav-link.show,
+				&:focus {
+					color: white;
 				}
 
 				&.active,
@@ -1405,17 +1425,18 @@ nav.menu-puestos {
 #planoTipos {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 1em;
 }
 
 #planoTipos li {
 	list-style: none;
-	margin-left: 2em
+	//margin-left: 2em
 }
 
 /*#planoTipos li:before{content:"o ";color:red;font-size:.4em}*/
-#planoTipos li:first-child {
+/*#planoTipos li:first-child {
 	margin-left: .5em
-}
+}*/
 
 #plano-puestos figure {
 	position: relative;
@@ -1426,7 +1447,8 @@ nav.menu-puestos {
 #plano-puestos figure figcaption,
 #cartelPuesto {
 	text-align: center;
-	width: 100%
+	width: 100%;
+	flex-basis: 30%;
 }
 
 #plano-puestos figure figcaption {
@@ -1555,15 +1577,17 @@ nav.menu-puestos {
 
 /*Plano w870px*/
 #plano-puestos {
-	max-width: 870px !important;
+	//max-width: 870px !important;
 
 	>figure {
-		max-width: 100%
+		max-width: 100%;
+		flex-grow: 1;
 	}
 
 	>div {
 		max-width: 100%;
 		height: auto;
+		gap:1rem;
 		//min-height: 620px;
 
 		>canvas {
@@ -1575,10 +1599,10 @@ nav.menu-puestos {
 
 }
 
-#cartelPuesto {
+/*#cartelPuesto {
 	width: 870px;
 	max-width: 100%;
-}
+}*/
 
 
 
@@ -2039,7 +2063,8 @@ ul.products li.item-evento {
 
 #homeCarousel .carousel-item {
 	//min-height: 85vh;
-	min-height: calc(100vh - 5.84rem);
+	//min-height: calc(100vh - 5.84rem);
+	height: 100vh;
 
 	h1 {
 		margin-top: 0 !important;
