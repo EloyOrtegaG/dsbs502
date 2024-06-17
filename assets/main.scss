@@ -241,6 +241,10 @@ body {
 	.info-prac p:not(strong) {
 		color: $tertiary;
 	}
+	.info-prac p {
+		max-width: 17em;
+		margin-inline: auto;
+	}
 
 	footer strong,
 	.bg-primary strong,
