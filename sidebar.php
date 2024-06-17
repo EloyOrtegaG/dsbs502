@@ -55,7 +55,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 
 					echo $output;
 				?>
-				<br />
+				<!-- <br />
 				<ul class="categories">
 					<li><h3><?php echo pll__('Categorías');?></h3></li>
 					<?php
@@ -68,7 +68,7 @@ if ( is_active_sidebar( 'primary_widget_area' ) || is_archive() || is_single() )
 					<?php
 						endif;
 					?>
-				</ul>
+				</ul> -->
 			</div><!-- /#primary-two -->
 		</div>
 	<?php

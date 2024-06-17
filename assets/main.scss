@@ -1400,7 +1400,10 @@ nav.menu-puestos {
 
 	h1 {
 		position: absolute;
+		left: 0;
+		@media (min-width: breakpoint-max(xl)) {		
 		left: 2rem;
+		}
 		bottom: 2rem;
 		z-index: 1;
 		color: white;
