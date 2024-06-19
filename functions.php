@@ -36,6 +36,7 @@ if ( ! function_exists( 'dsbs502_setup_theme' ) ) {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-thumbnails' );
+		add_image_size( 'evento-list-item-thumb',555,416, true);
 		add_theme_support(
 			'html5',
 			array(
@@ -651,7 +652,14 @@ function admin_style() {
 	
 
 function my_theme_setup() {
-    add_theme_support( 'woocommerce' );
+    //add_theme_support( 'woocommerce' );
+	add_theme_support( 'woocommerce', array(
+	//	'thumbnail_image_width' => 554,		
+		//'gallery_thumbnail_image_width' => 100,
+		//'single_image_width' => 500,
+	) );
+	
+		
 }
 add_action( 'after_setup_theme', 'my_theme_setup' ); 
 
@@ -672,6 +680,16 @@ function my_after_main_content() {
     echo '<!-- Ending content wrapper for your theme -->';
 }
 add_action( 'woocommerce_after_main_content', 'my_after_main_content' );
+
+
+add_filter( 'woocommerce_template_loop_product_thumbnail', function( $size ) {
+    return array(
+        'width' => 554,
+        'height' => 416,
+        'crop' => 1,
+    );
+} );
+
 
 
 
@@ -1372,7 +1390,7 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
 /*Modificar listado products*/
 
 
-remove_action('woocommerce_template_loop_product_thumbnail', 'woocommerce_template_loop_product_title', 10); 
+//remove_action('woocommerce_template_loop_product_thumbnail', 'woocommerce_template_loop_product_title', 10); 
 	
 add_action( 'woocommerce_before_shop_loop_item', 'anadir_fecha_abrir_div' );
 function anadir_fecha_abrir_div() {	
@@ -1398,7 +1416,32 @@ function anadir_fecha_abrir_div() {
 		 
 }
 
+add_action('woocommerce_before_shop_loop_item_title', 'agrupar_tit_precio_en_div');
+function agrupar_tit_precio_en_div() {
+	echo '<div class="texto-evento-item">';
+	
+	}
+remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price');	
+add_action('woocommerce_after_shop_loop_item_title', 'descripcion_corta_evento');
+function descripcion_corta_evento() {
+	the_excerpt();
+}
+
+
+
 add_action( 'woocommerce_after_shop_loop_item', 'cerrar_div' );
 function cerrar_div() {
-	echo '</div>';
+	
+	echo '</div></div>';
 	}
+
+	add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
+		return 'evento-list-item-thumb';
+	} );
+	
+	//add_action( 'woocommerce_before_shop_loop_item', 'anadir_fecha_abrir_div' );
+
+	add_action( 'woocommerce_after_main_content', 'espacio_sobre_pie' );
+function espacio_sobre_pie() {
+	echo('<div style="height:144px" aria-hidden="true" class="wp-block-spacer"></div>');
+}

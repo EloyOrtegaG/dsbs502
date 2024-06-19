@@ -19,13 +19,15 @@ $text-white: #f2f2f2;
 $tertiary: #e1e1e1;
 
 /* scss-docs-start grid-breakpoints*/
-$grid-breakpoints: (xs: 0,
+$grid-breakpoints: (
+	xs: 0,
 	sm: 576px,
 	md: 768px,
 	lg: 992px,
 	xl: 1200px,
 	xxl: 1400px,
-	xxxl: 1600px);
+	//xxxl: 1600px
+);
 // scss-docs-end grid-breakpoints
 
 // Grid containers
@@ -34,35 +36,37 @@ $grid-breakpoints: (xs: 0,
 
 // scss-docs-start container-max-widths
 
-$container-max-widths: (sm: 540px,
+$container-max-widths: (
+	sm: 540px,
 	md: 758px,
 	lg: 990px,
 	xl: 1140px,
 	xxl: 1440px,
-	xxxl: 1520px);
+	//xxxl: 1520px
+);
 
 // Fonts
 $font-family-sans-serif: 'Inter',
-system-ui,
--apple-system,
-'Segoe UI',
-Roboto,
-'Helvetica Neue',
-Arial,
-'Noto Sans',
-'Liberation Sans',
-sans-serif;
+	system-ui,
+	-apple-system,
+	'Segoe UI',
+	Roboto,
+	'Helvetica Neue',
+	Arial,
+	'Noto Sans',
+	'Liberation Sans',
+	sans-serif;
 $font-family-serif: Georgia,
-'Times New Roman',
-Times,
-serif;
+	'Times New Roman',
+	Times,
+	serif;
 $font-family-monospace: SFMono-Regular,
-Menlo,
-Monaco,
-Consolas,
-'Liberation Mono',
-'Courier New',
-monospace;
+	Menlo,
+	Monaco,
+	Consolas,
+	'Liberation Mono',
+	'Courier New',
+	monospace;
 $font-family-base: $font-family-sans-serif;
 
 $link-decoration: none;
@@ -192,6 +196,7 @@ body {
 	.info-prac p:not(strong) {
 		color: $tertiary;
 	}
+
 	.info-prac p {
 		max-width: 17em;
 		margin-inline: auto;
@@ -230,7 +235,8 @@ blockquote {
 	font-size: 1.25rem;
 }
 
-.single-puesto .blockquote, .single-puesto .wp-block-quote  {
+.single-puesto .blockquote,
+.single-puesto .wp-block-quote {
 	margin-bottom: 1rem;
 }
 
@@ -261,12 +267,23 @@ img {
 }
 
 /* Header */
- #header.headroom--top { background-image: linear-gradient(rgba($primary, 1), rgba($primary, 1));}
-body.home #header.home.headroom--top { background-image: linear-gradient(rgba($primary, 1), rgba($primary, 0));}
+#header.headroom--top {
+	background-image: linear-gradient(rgba($primary, 1), rgba($primary, 1));
+}
+
+body.home #header.home.headroom--top {
+	background-image: linear-gradient(rgba($primary, 1), rgba($primary, 0));
+}
+
 #header {
-	&:not(.home) {background: $primary;	}
-	
-	&.headroom--not-top.headroom--pinned { background: rgba($primary,.8);}
+	&:not(.home) {
+		background: $primary;
+	}
+
+	&.headroom--not-top.headroom--pinned {
+		background: rgba($primary, .8);
+	}
+
 	.search-form {
 		min-width: 250px;
 	}
@@ -277,15 +294,16 @@ body.home #header.home.headroom--top { background-image: linear-gradient(rgba($p
 	}
 
 	padding-top: 0;
-	
-		a.navbar-brand img {
-			width: 147px;
-			height: auto;
-			@media (max-width: breakpoint-max(md)) {
-				width: 100px;
-			}
+
+	a.navbar-brand img {
+		width: 147px;
+		height: auto;
+
+		@media (max-width: breakpoint-max(md)) {
+			width: 100px;
 		}
 	}
+}
 
 
 
@@ -301,6 +319,7 @@ body.home #header.home.headroom--top { background-image: linear-gradient(rgba($p
 }*/
 main {
 	padding-top: 92px;
+
 	@media(max-width:breakpoint-max(md)) {
 		padding-top: 69px;
 	}
@@ -422,8 +441,7 @@ body.home main {
 
 }
 
-ul.datos-puesto,
-ul.datos-evento {
+ul.datos-puesto {
 	list-style: none;
 	margin: 0;
 	//padding: 1em;
@@ -444,12 +462,15 @@ ul.datos-evento {
 	list-style: none;
 	margin: 0 0 1.5em;
 	padding: 0;
+	display: flex;
 
 	//border-bottom: 1px solid $primary;
 	li {
-		border-bottom: 1px solid $primary;
-		padding-top: .5rem;
-		padding-bottom: .5rem;
+		background-color: $gray-200;
+		border-radius: 5em;
+		margin-right: .5em;
+		padding: .5em 1em;
+
 	}
 }
 
@@ -619,7 +640,7 @@ z-index: 10;*/
 header {
 	.navbar-nav {
 		li {
-			
+
 			>a {
 				font-size: 1.125rem;
 				font-weight: 500;
@@ -633,7 +654,8 @@ header {
 					border-color: $gray-500;
 				}
 
-				&.nav-link.active, &.nav-link.show,
+				&.nav-link.active,
+				&.nav-link.show,
 				&:focus {
 					color: white;
 				}
@@ -751,6 +773,7 @@ header {
 
 	h1.has-large-font-size {
 		font-size: 3.5rem !important;
+
 		@media (max-width: breakpoint-max(md)) {
 			font-size: 2.85rem !important;
 			line-height: 1.1;
@@ -762,29 +785,34 @@ header {
 		max-width: 36rem;
 	}
 
-	@media (max-width: breakpoint-max(md)) { 
+	@media (max-width: breakpoint-max(md)) {
 		.lead {
-			font-size: 1.1rem;			
+			font-size: 1.1rem;
 		}
+
 		span.wp-block-cover__background {
 			background: rgba(black, .6) !important;
 		}
 	}
-	@media (max-width: breakpoint-max(md)) { 
+
+	@media (max-width: breakpoint-max(md)) {
 		height: calc(100vh - 69px);
 	}
 }
 
 .mercado-milestones {
-	font-size: 1.125rem;	
+	font-size: 1.125rem;
 	color: #f0f0f0;
+
 	strong {
 		font-size: 32px;
 		color: white;
 		letter-spacing: -.04em;
 	}
+
 	@media (max-width: breakpoint-max(md)) {
-		font-size: 1rem;	
+		font-size: 1rem;
+
 		strong {
 			font-size: 1.5rem;
 		}
@@ -865,6 +893,7 @@ header {
 .historia {
 	.card {
 		border: 0;
+
 		.card-body {
 			padding: 0;
 		}
@@ -1334,9 +1363,11 @@ nav.menu-puestos {
 	h1 {
 		position: absolute;
 		left: 0;
-		@media (min-width: breakpoint-max(xl)) {		
-		left: 2rem;
+
+		@media (min-width: breakpoint-max(xl)) {
+			left: 2rem;
 		}
+
 		bottom: 2rem;
 		z-index: 1;
 		color: white;
@@ -1527,7 +1558,7 @@ nav.menu-puestos {
 	>div {
 		max-width: 100%;
 		height: auto;
-		gap:1rem;
+		gap: 1rem;
 		//min-height: 620px;
 
 		>canvas {
@@ -1633,10 +1664,17 @@ nav.menu-puestos {
 	}
 }
 
+
+
 .woocommerce ul.products li.product .woocommerce-loop-category__title,
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
 .woocommerce ul.products li.product h3 {
 	font-size: 1.5em;
+
+	@media (min-width: breakpoint-max(lg)) {
+		margin-top: 0;
+		font-size: 2.25em;
+	}
 }
 
 svg.wc-block-mini-cart__icon circle,
@@ -1654,31 +1692,68 @@ svg.wc-block-mini-cart__icon path {
 }
 
 /*listado eventos*/
-ul.products li.item-evento {
-	display: flex;
-	flex-wrap: wrap;
+.woocommerce ul.products {
+	max-width: 1320px;
+	margin: 0 auto;
 
-	@media (min-width: breakpoint-max(lg)) {
-
-		>*:first-child {
-			flex-basis: 16%;
-			//max-width: 16%;
-			width: auto;
-		}
+	li.item-evento {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-bottom: 0;
 
 		.foto-tit-info {
-			display: flex;
-			flex-basis: 84%;
-			//max-width: 84%;
-			width: auto;
+			.texto-evento-item a:first-child {
+				padding: 4em;
+				@media (max-width: breakpoint-max(xl)) {
+					padding: .5em 1.5em;
+				}
+			}
+		}
 
-			.button {
-				display: none;
+		@media (min-width: breakpoint-max(md)) {
+
+			>*:first-child {
+				flex-basis: 16%;
+				//max-width: 16%;
+				width: auto;
+			}
+
+			&:nth-child(2n+1) {
+				.foto-tit-info {
+					flex-direction: row-reverse;
+				}
+			}
+
+			.foto-tit-info {
+				flex-basis: 84%;
+
+				display: flex;
+
+				>* {
+					flex: 1;
+				}
+
+				width: auto;
+
+				.texto-evento-item {
+					>a:first-child {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						height: 100%;
+						//padding: 4em;
+					}
+				}
+
+
+				.button {
+					display: none;
+				}
 			}
 		}
 	}
 }
-
 
 
 //EVENT TICKETS MANAGER FOR WOOCOMMERCE
@@ -1800,13 +1875,14 @@ ul.products li.item-evento {
 .woocommerce ul.products li.product a,
 .woocommerce-LoopProduct-link.woocommerce-loop-product__link {
 	position: relative;
-	width: 100%;
+	//width: 100%;
 
 	img {
-	//	width: 100%;
+		//	width: 100%;
 		width: auto;
 		object-fit: cover;
 		float: left;
+		margin-bottom: 0;
 	}
 
 	.fecha-sobre-foto {
@@ -1841,11 +1917,13 @@ ul.products li.item-evento {
 
 	.fecha-item-evento {
 		text-align: center;
+		color: $gray-700;
 
 		.dia {
 			font-size: 3rem;
+			line-height: 1.2;
 			font-weight: 700;
-			color: $primary;
+			//color: $primary;
 			letter-spacing: -0.02em;
 		}
 
@@ -1860,11 +1938,11 @@ ul.products li.item-evento {
 		}
 
 		.anio {
-			font-size: 1.5rem;
+			font-size: 1rem;
 			letter-spacing: -0.03em;
 		}
 
-		@media (max-width: breakpoint-max(lg)) {
+		@media (max-width: breakpoint-max(md)) {
 			position: absolute;
 			z-index: 1;
 			background-color: rgba(white, $alpha: .8);
@@ -1904,7 +1982,7 @@ ul.products li.item-evento {
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(270deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, 0.8) 100%);
+		background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 
 		@media(max-width: 991px) {
 			background: rgba(0, 0, 0, 0.5) !important;
@@ -2049,8 +2127,9 @@ ul.products li.item-evento {
 #homeCarousel .carousel-item .carousel-caption {
 	z-index: 1;
 	bottom: 25%;
+
 	@media (min-width: 1921px) {
-	bottom: 33%;
+		bottom: 33%;
 	}
 
 	h1,
