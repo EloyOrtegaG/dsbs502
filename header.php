@@ -75,7 +75,7 @@ $search_enabled = get_theme_mod('search_enabled', '1'); // Get custom meta-value
 
 					</div><!-- /.navbar-collapse -->
 
-					<div class="menu-idiomas d-none d-lg-flex align-items-center"><?php dynamic_sidebar('header_widget_01'); ?></div>
+					<div class="menu-idiomas d-lg-flex align-items-center"><?php dynamic_sidebar('header_widget_01'); ?></div>
 					<a class="d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasMainMenu" role="button"
 					aria-controls="offcanvasMainMenu">
 					<i class="bi bi-list text-white"></i></a>
