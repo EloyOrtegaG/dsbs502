@@ -17,14 +17,15 @@ get_header();
 <div class="container">
     <div class="row">
         
-        <div class="col-xl-10 order-xl-2 px-lg-5">
+        <div class="col-xl-9 order-xl-2 px-lg-5">
             <?php the_content(); ?>
         </div>
         
-        <div class="col-xl-2 pt-5">
+        <div class="col-xl-3 pt-5">
         <h3>
-                <a href="<?php echo get_site_url(); ?>/planta-baja">
-                    <?php echo pll__('Planta baja'); ?>
+                <!-- <a href="<?php echo get_site_url(); ?>/planta-baja"> -->
+                <a href="<?php echo get_site_url(); echo pll__('Link Planta Baja') ?>/">
+                    <?php echo pll__('Planta Baja'); ?>
                 </a>
             </h3>
             <?php
@@ -51,8 +52,9 @@ get_header();
             ?>
 
 <h3 class="mt-5">
-                <a href="<?php echo get_site_url(); ?>/planta-superior">
-                    <?php echo pll__('Planta superior'); ?>
+                <!-- <a href="<?php echo get_site_url(); ?>/planta-superior"> -->
+                <a href="<?php echo get_site_url(); echo pll__('Link Planta Superior') ?>/">
+                    <?php echo pll__('Planta Superior'); ?>
                 </a>
             </h3>
             <?php

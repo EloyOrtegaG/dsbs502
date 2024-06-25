@@ -6,7 +6,7 @@ get_header();
 ?>
 <div class="container">
     <div class="row">
-    <div class="col-xl-10 order-xl-2">
+    <div class="col-xl-9 order-xl-2">
             <header class="entry-header cab-puesto mb-2">
             <?php if ( has_post_thumbnail($post->ID)) : ?>
                 <?php $thumbnail_id = get_post_thumbnail_id($post->ID);
@@ -40,21 +40,21 @@ get_header();
 
 
 
-                if (has_term('fruterias', 'gremios-puesto')) :
+                if (has_term('fruterias', 'gremios-puesto') || has_term('fruta-dendak', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorFruteria . '; padding-left: 1rem;">';
-                    elseif (has_term('carnicerias-y-charcuterias', 'gremios-puesto')) :
+                    elseif (has_term('carnicerias-y-charcuterias', 'gremios-puesto') || has_term('harategiak-eta-urdaitegiak', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorCarniceria . '; padding-left: 1rem;">';   
-                    elseif (has_term('pescaderias', 'gremios-puesto')) :
+                    elseif (has_term('pescaderias', 'gremios-puesto') || has_term('arraindegiak', 'gremios-puesto') ) :
                         echo 'style="border-left: 8px solid ' . $ColorPescaderia . '; padding-left: 1rem;">';
-                    elseif (has_term('ecopuestos', 'gremios-puesto')) :
+                    elseif (has_term('ecopuestos', 'gremios-puesto') || has_term('saltoki-ekologikoak', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorEcopuestos . '; padding-left: 1rem;">';
-                        elseif (has_term('fundacion-abastos', 'gremios-puesto')) :
+                    elseif (has_term('fundacion-abastos', 'gremios-puesto') || has_term('abastos-fundazioa', 'gremios-puesto')) :
                             echo 'style="border-left: 8px solid ' . $ColorFundacionAbastos . '; padding-left: 1rem;">';
-                    elseif (has_term('gastrobares', 'gremios-puesto')) :
+                    elseif (has_term('gastrobares', 'gremios-puesto')|| has_term('taberna-gastronomikoak', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorGastrobares . '; padding-left: 1rem;">';
-                    elseif (has_term('pollerias-y-quesos', 'gremios-puesto')) :
+                    elseif (has_term('pollerias-y-quesos', 'gremios-puesto') || has_term('oilasko-dendak-eta-gaztak', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorPolleria . '; padding-left: 1rem;">';
-                        elseif (has_term('otros', 'gremios-puesto')) :
+                    elseif (has_term('otros', 'gremios-puesto') || has_term('beste-batzuk', 'gremios-puesto')) :
                         echo 'style="border-left: 8px solid ' . $ColorOtros . '; padding-left: 1rem;">';
                 endif;
 
@@ -86,11 +86,11 @@ get_header();
                     }
                 else;*/
 
-                    if( has_term( 'planta-baja', 'plantas-puesto' ) ) : ?>
-                        <i class="bi bi-arrow-left"></i><a href="https://mercadoabastos.eus/planta-baja/"><?php echo pll__('Volver al plano');?></a>
-
-                        <?php else : ?>
-                            <i class="bi bi-arrow-left"></i><a href="https://mercadoabastos.eus/planta-superior/"><?php echo pll__('Volver al plano');?></a>
+                    if( has_term( 'planta-baja', 'plantas-puesto' ) || has_term( 'beheko-solairua', 'plantas-puesto' ) ) : ?>                        
+                        <i class="bi bi-arrow-left"></i><a href="<?php echo pll__('URL_volver_a_plano_planta_baja');?>"><?php echo pll__('Volver al plano');?></a>
+                        <?php else : ?>                        
+                        <i class="bi bi-arrow-left"></i><a href="<?php echo pll__('URL_volver_a_plano_planta_superior');?>"><?php echo pll__('Volver al plano');?></a>
+                            
                     <?php endif; 
                     get_query_var('taxonomy');
                     ?>
@@ -155,10 +155,11 @@ get_header();
                 </div>
             </div>
         </div>
-        <div class="col-xl-2 pt-5">
+        <div class="col-xl-3 pt-5">
             <h3>
-                <a href="<?php echo get_site_url(); ?>/planta-baja">
-                    <?php echo pll__('Planta baja'); ?>
+                <!-- <a href="<?php echo get_site_url(); ?>/planta-baja"> -->
+                <a href="<?php echo get_site_url(); echo pll__('Link Planta Baja') ?>/">
+                    <?php echo pll__('Planta Baja'); ?>
                 </a>
             </h3>
             <?php
@@ -185,8 +186,9 @@ get_header();
             ?>
 
 <h3 class="mt-5">
-                <a href="<?php echo get_site_url(); ?>/planta-superior">
-                    <?php echo pll__('Planta superior'); ?>
+                <!-- <a href="<?php echo get_site_url(); ?>/planta-superior"> -->
+                <a href="<?php echo get_site_url(); echo pll__('Link Planta Superior') ?>/">
+                    <?php echo pll__('Planta Superior'); ?>
                 </a>
             </h3>
             <?php

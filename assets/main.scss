@@ -1439,7 +1439,7 @@ nav.menu-puestos {
 
 #nombrePuesto {
 	border: 1px solid #000;
-	font-size: 1.25em;
+	//font-size: 1.25em;
 	margin: 0 auto;
 	min-height: 2.5em;
 	min-width: 100%;
@@ -1713,6 +1713,13 @@ svg.wc-block-mini-cart__icon path {
 				@media (max-width: breakpoint-max(xl)) {
 					padding: .5em 1.5em;
 				}
+				background-color: #282d33;
+				
+					h2 {
+					color: white;
+				}
+				p { color: $light;}
+			
 			}
 		}
 

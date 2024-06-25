@@ -1391,7 +1391,9 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
 
 
 //remove_action('woocommerce_template_loop_product_thumbnail', 'woocommerce_template_loop_product_title', 10); 
-	
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
 add_action( 'woocommerce_before_shop_loop_item', 'anadir_fecha_abrir_div' );
 function anadir_fecha_abrir_div() {	
 	 global $product;
@@ -1445,3 +1447,23 @@ function cerrar_div() {
 function espacio_sobre_pie() {
 	echo('<div style="height:144px" aria-hidden="true" class="wp-block-spacer"></div>');
 }
+
+
+/*Polylang*/    
+pll_register_string("Planta Baja", "Planta Baja", "Puestos");
+pll_register_string("Planta Superior", "Planta Superior", "Puestos");
+
+pll_register_string("Link Planta Baja", "Link Planta Baja", "Puestos");
+pll_register_string("Link Planta Superior", "Link Planta Superior", "Puestos");
+
+
+pll_register_string("Puesto", "Puesto", "Puestos");
+pll_register_string("Teléfono", "Teléfono", "Puestos");
+pll_register_string("Móvil", "Móvil", "Puestos");
+pll_register_string("E-mail", "E-mail", "Puestos");
+pll_register_string("Sitio web", "Sitio web", "Puestos");
+pll_register_string("Especialidad", "Especialidad", "Puestos");
+
+pll_register_string("Volver al plano", "Volver al plano", "Puestos");
+pll_register_string("URL_volver_a_plano_planta_baja", "URL_volver_a_plano_planta_baja", "Puestos");
+pll_register_string("URL_volver_a_plano_planta_superior", "URL_volver_a_plano_planta_superior", "Puestos");
