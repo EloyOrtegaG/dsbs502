@@ -16,7 +16,12 @@ get_header();
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-lg-2 pt-5">
+        
+        <div class="col-xl-10 order-xl-2 px-lg-5">
+            <?php the_content(); ?>
+        </div>
+        
+        <div class="col-xl-2 pt-5">
         <h3>
                 <a href="<?php echo get_site_url(); ?>/planta-baja">
                     <?php echo pll__('Planta baja'); ?>
@@ -72,12 +77,6 @@ get_header();
 
 
             ?>
-        </div>
-        <div class="col-lg-10 px-lg-5">
-
-
-            <?php the_content(); ?>
-
         </div>
     </div>
 

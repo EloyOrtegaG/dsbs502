@@ -22,11 +22,7 @@ $search_enabled = get_theme_mod('search_enabled', '1'); // Get custom meta-value
 
 	<div id="wrapper">
 		<header>
-			<nav id="header" class="navbar navbar-dark navbar-expand-lg <?php echo esc_attr($navbar_scheme);
-			if (isset($navbar_position) && 'fixed_top' === $navbar_position): echo ' fixed-top';
-			elseif (isset($navbar_position) && 'fixed_bottom' === $navbar_position):
-				echo ' fixed-bottom';
-			endif;
+			<nav id="header" class="navbar navbar-expand-lg <?php			
 			if (is_home() || is_front_page()):
 				echo ' home';
 			endif; ?>">
@@ -38,7 +34,7 @@ $search_enabled = get_theme_mod('search_enabled', '1'); // Get custom meta-value
 						
 						if (!empty($header_logo)):
 							?>
-							<img src="<?php echo esc_url($header_logo); ?>" width="147" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" />
+							<img src="<?php echo esc_url($header_logo); ?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" />
 							<?php
 						else:
 							echo esc_attr(get_bloginfo('name', 'display'));
