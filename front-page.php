@@ -153,13 +153,7 @@ $query_slider = new WP_Query($values_slider);
                     </div> <!-- /.col -->
                 </article><!-- /#post-<?php the_ID(); ?> -->
                 <?php
-            endwhile;
-        else:
-            ?>
-            
-            Vaya, no hay entradas.
-            <?php
-        endif;
+            endwhile; endif;
         wp_reset_postdata();
         ?>
 
