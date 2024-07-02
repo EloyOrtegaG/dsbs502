@@ -19,15 +19,15 @@ $text-white: #f2f2f2;
 $tertiary: #e1e1e1;
 
 /* scss-docs-start grid-breakpoints*/
-$grid-breakpoints: (
+/*$grid-breakpoints: (
 	xs: 0,
 	sm: 576px,
 	md: 768px,
 	lg: 992px,
 	xl: 1200px,
 	xxl: 1400px,
-	//xxxl: 1600px
-);
+	xxxl: 1600px
+);*/
 // scss-docs-end grid-breakpoints
 
 // Grid containers
@@ -35,15 +35,15 @@ $grid-breakpoints: (
 // Define the maximum width of `.container` for different screen sizes.
 
 // scss-docs-start container-max-widths
-
+/*
 $container-max-widths: (
 	sm: 540px,
 	md: 758px,
 	lg: 990px,
 	xl: 1140px,
 	xxl: 1440px,
-	//xxxl: 1520px
-);
+	xxxl: 1520px
+);*/
 
 // Fonts
 $font-family-sans-serif: 'Inter',
@@ -159,6 +159,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	background-color: $light;
+	overflow-x: hidden;
 
 	&.page-template-page-full {
 		#main {
@@ -894,7 +895,9 @@ header {
 	filter: grayscale(100%) brightness(80%) contrast(220%);
 }
 
-
+.text-underline {
+	text-decoration: underline !important;
+}
 .historia {
 	.card {
 		border: 0;
@@ -1245,7 +1248,7 @@ header {
 
 }
 
-.paginador {
+.paginador, .woocommerce-pagination {
 	margin-top: 40px;
 	margin-bottom: 50px;
 	padding-top: 20px;
@@ -1277,7 +1280,7 @@ header {
 		padding: 0;
 	}
 
-	&.current {
+	&.current, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
 		background: $primary;
 		color: #fff;
 	}
@@ -1287,7 +1290,10 @@ a.page-numbers:hover {
 	background: $gray-400;
 }
 
-
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
+	background: $primary;
+	color: #fff;
+}
 /*Menu sidebar puestos*/
 nav.menu-puestos {
 	margin-top: 1.5rem;
@@ -1669,7 +1675,14 @@ nav.menu-puestos {
 	}
 }
 
-
+/*carousel eventos home*/
+.wpcp-product-carousel .wpcp-single-item .wpcp-product-title {
+	font-size: 1.3rem;
+	line-height: 1.15;
+}
+.wpcp-carousel-section .swiper-wrapper {
+	align-items: stretch;
+}
 
 .woocommerce ul.products li.product .woocommerce-loop-category__title,
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
@@ -1702,14 +1715,17 @@ svg.wc-block-mini-cart__icon path {
 	margin: 0 auto;
 
 	li.item-evento {
+		@media (min-width: breakpoint-max(md)) {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
+		align-items: center;}
 		margin-bottom: 0;
 
 		.foto-tit-info {
 			.texto-evento-item a:first-child {
 				padding: 4em;
+				display: flex;
+				flex-direction: column;
 				@media (max-width: breakpoint-max(xl)) {
 					padding: .5em 1.5em;
 				}
@@ -1720,6 +1736,9 @@ svg.wc-block-mini-cart__icon path {
 				}
 				p { color: $light;}
 			
+			}
+			.product_type_simple {
+				display: none;
 			}
 		}
 
@@ -1849,7 +1868,9 @@ svg.wc-block-mini-cart__icon path {
 }
 
 /*Ficha evento*/
-
+.stock.out-of-stock {
+	display: none;
+}
 .wps_etmfw_event_info_section {
 	margin-bottom: 2em;
 
@@ -1895,6 +1916,7 @@ svg.wc-block-mini-cart__icon path {
 		object-fit: cover;
 		float: left;
 		margin-bottom: 0;
+		height: 100%;
 	}
 
 	.fecha-sobre-foto {
@@ -1983,6 +2005,10 @@ svg.wc-block-mini-cart__icon path {
 		}
 	}
 }
+.woocommerce ul.products li.product strong {
+	display: inline;
+}
+
 @media (max-width: breakpoint-max(sm)) {
 	.woocommerce ul.products[class*="columns-"] li.product, .woocommerce-page ul.products[class*="columns-"] li.product {
 		float: none;
@@ -2088,6 +2114,10 @@ svg.wc-block-mini-cart__icon path {
 		text-transform: uppercase;
 
 		font-weight: bold;
+		@media (max-width: breakpoint-max(lg)) { 
+			font-size: 1rem;
+
+		}
 	}
 
 	.carousel-control-next,
@@ -2193,3 +2223,4 @@ svg.wc-block-mini-cart__icon path {
 	text-transform: uppercase;
 	font-weight: 500;
 }
+

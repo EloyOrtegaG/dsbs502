@@ -27,6 +27,8 @@
 						<input type="submit" class="bg-white text-primary btn btn-md mt-md-2" value="<?php echo pll__('Suscríbete');?>">
 					</div>
 				</form> -->
+				
+				
 			</div>
 			<div class="col-md-4">
 
@@ -66,10 +68,16 @@
 			</div>
 
 		</div><!-- /.row -->
-		<div class="row mt-5">
-			<p class="text-md-end">
-				<?php printf(esc_html__('&copy; %1$s %2$s.', 'dsbs502'), wp_date('Y'), get_bloginfo('name', 'display')); ?>
-			</p>
+		<div class="row mt-5 align-items-end">
+			<div class="col-lg-6"><div class="d-lg-flex">
+					<img src="<?php echo get_site_url() ?>/wp-content/uploads/2024/07/ES_Financiado_por_la_Union_Europea_RGB_WHITE.svg" alt="Logo Funded by the European Union" class="img-responsive" width="200">
+					<img src="<?php echo get_site_url() ?>/wp-content/uploads/2024/07/Logo-TR-negativo.svg" alt="Logo Plan de Recuperación Transformación y Resilencia" width="160">
+				</div></div>
+			<div class="col-lg-6">
+				<p class="text-md-end">
+					<?php printf(esc_html__('&copy; %1$s %2$s.', 'dsbs502'), wp_date('Y'), get_bloginfo('name', 'display')); ?>
+				</p>
+			</div>
 		</div>
 	</div><!-- /.container -->
 </footer><!-- /#footer -->

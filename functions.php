@@ -1467,3 +1467,6 @@ pll_register_string("Especialidad", "Especialidad", "Puestos");
 pll_register_string("Volver al plano", "Volver al plano", "Puestos");
 pll_register_string("URL_volver_a_plano_planta_baja", "URL_volver_a_plano_planta_baja", "Puestos");
 pll_register_string("URL_volver_a_plano_planta_superior", "URL_volver_a_plano_planta_superior", "Puestos");
+
+
+pll_register_string("Eventos", "Eventos", "Cadenas");

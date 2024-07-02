@@ -22,7 +22,7 @@ $search_enabled = get_theme_mod('search_enabled', '1'); // Get custom meta-value
 
 	<div id="wrapper">
 		<header>
-			<nav id="header" class="navbar navbar-expand-lg <?php			
+			<nav id="header" class="navbar navbar-expand-xl <?php			
 			if (is_home() || is_front_page()):
 				echo ' home';
 			endif; ?>">
@@ -75,10 +75,12 @@ $search_enabled = get_theme_mod('search_enabled', '1'); // Get custom meta-value
 
 					</div><!-- /.navbar-collapse -->
 
-					<div class="menu-idiomas d-lg-flex align-items-center"><?php dynamic_sidebar('header_widget_01'); ?></div>
-					<a class="d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasMainMenu" role="button"
-					aria-controls="offcanvasMainMenu">
-					<i class="bi bi-list text-white"></i></a>
+					<div class="d-flex">
+						<div class="menu-idiomas d-flex align-items-center"><?php dynamic_sidebar('header_widget_01'); ?></div>
+						<a class="d-block d-xl-none" data-bs-toggle="offcanvas" href="#offcanvasMainMenu" role="button"
+						aria-controls="offcanvasMainMenu">
+						<i class="bi bi-list text-white"></i></a>
+					</div>
 				</div><!-- /.container -->
 				<!--<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasMainMenu" role="button"
 					aria-controls="offcanvasMainMenu">

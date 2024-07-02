@@ -69,11 +69,11 @@ $query_slider = new WP_Query($values_slider);
                                 $url_enlace_slider01 = get_post_meta($post->ID, 'meta-box-slider-url-bt-01', true);
                                 $url_enlace_slider02 = get_post_meta($post->ID, 'meta-box-slider-url-bt-02', true);
                                 if (!empty($url_enlace_slider01)): ?>
-                                    <a class="btn btn-lg-lg mb-2 mb-sm-0 btn-primary smoothScroll"
+                                    <a class="btn btn-lg mb-2 mb-sm-0 btn-primary smoothScroll"
                                         href="<?php echo get_post_meta(get_the_ID(), 'meta-box-slider-url-bt-01', true); ?>"><i class="bi bi-arrow-right me-2"></i><?php echo get_post_meta(get_the_ID(), 'meta-box-slider-texto-bt-01', true); ?></a>
                                 <?php endif;
                                 if (!empty($url_enlace_slider02)): ?>
-                                    <a class="btn btn-lg-lg mb-0 mb-sm-0 btn-white-outline text-white smoothScroll"
+                                    <a class="btn btn-lg mb-0 mb-sm-0 btn-white-outline text-white smoothScroll"
                                         href="<?php echo get_post_meta(get_the_ID(), 'meta-box-slider-url-bt-02', true); ?>"><?php echo get_post_meta(get_the_ID(), 'meta-box-slider-texto-bt-02', true); ?></a>
                                 <?php endif; ?>
                             </p>
@@ -158,7 +158,9 @@ $query_slider = new WP_Query($values_slider);
         ?>
 
     </div>
+    <?php if(ICL_LANGUAGE_CODE=='es'): ?>
     <div style="height:144px" aria-hidden="true" class="wp-block-spacer"></div>
+    <?php endif; ?>
     <!-- <section class="eventos-home">
         <h2 class="text-center mb-5"><?php echo pll__('Eventos'); ?></h2>
         <ul class="products">
@@ -180,7 +182,17 @@ $query_slider = new WP_Query($values_slider);
             ?>
         </ul>
     </section> -->
+
+
 </div>
+<?/*php if(ICL_LANGUAGE_CODE=='es'): */?>
+    <section>
+<h1 class="text-center mb-5"><?php echo pll__('Eventos'); ?></h1>
+<?php echo do_shortcode('[sp_wpcarousel id="2701"]'); ?>
+</section>
 <div style="height:48px" aria-hidden="true" class="wp-block-spacer"></div>
+<?/*php endif; */?>
+
+
 
 <?php get_footer(); ?>
